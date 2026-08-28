@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Is History?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FFF8F0; --card:#ffffff; --text:#2D3436; --muted:#636E72;
+  --teal:#4ECDC4; --teal-dk:#2F9E96;
+  --red:#FF6B6B; --red-dk:#C0392B;
+  --amber:#FFD93D; --amber-dk:#D9A800;
+  --purple:#9B5DE5; --blue:#3498DB; --green:#2ECC71; --orange:#FF8400;
+  --ochre:#C1440E; --ochre-lt:#E07A3F; --sand:#E8C39E; --earth:#8C5A2B;
+  --night:#171C1B; --slate:#1F2D2B; --plum:#241B3A; --bark:#2A1B12;
+  --radius:22px; --shadow:0 10px 40px rgba(0,0,0,.12);
+  --maxw:1680px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{
+  font-family:'Fredoka',system-ui,-apple-system,'Segoe UI',sans-serif;
+  background:var(--cream); color:var(--text);
+  font-size:clamp(1.05rem,.72rem + .55vw,1.45rem); line-height:1.65;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+.mono{font-family:'Space Mono',monospace}
+
+/* ---------- progress + nav ---------- */
+#progress{position:fixed;top:0;left:0;height:6px;width:0;z-index:120;
+  background:linear-gradient(90deg,var(--teal),var(--amber),var(--ochre));transition:width .1s linear}
+nav#topnav{position:sticky;top:0;z-index:100;background:rgba(23,28,27,.94);
+  backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.12)}
+.navwrap{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;gap:1rem;
+  padding:.6rem 1.5rem;overflow-x:auto;scrollbar-width:none}
+.navwrap::-webkit-scrollbar{display:none}
+.navbrand{font-weight:700;color:#fff;font-size:1.05rem;letter-spacing:.02em;white-space:nowrap;
+  display:flex;align-items:center;gap:.5rem;flex-shrink:0}
+.navbrand svg{width:26px;height:26px;flex-shrink:0}
+.navlinks{display:flex;gap:.4rem;flex-wrap:nowrap}
+.navlinks a{color:rgba(255,255,255,.72);text-decoration:none;font-size:.82rem;font-weight:500;
+  padding:.42rem .8rem;border-radius:999px;white-space:nowrap;transition:all .18s;border:1px solid transparent}
+.navlinks a:hover{color:#fff;background:rgba(255,255,255,.12)}
+.navlinks a.active{color:var(--night);background:var(--amber);font-weight:600}
+
+/* ---------- generic section ---------- */
+section{padding:clamp(3.5rem,6vw,7rem) 1.5rem;position:relative}
+.wrap{max-width:var(--maxw);margin:0 auto}
+.wrap-narrow{max-width:1180px;margin:0 auto}
+.band-dark{background:var(--slate);color:#F2EFE9}
+.band-bark{background:var(--bark);color:#F6EEE4}
+.band-plum{background:var(--plum);color:#F1ECFA}
+.band-warm{background:linear-gradient(165deg,#FFF3E0 0%,#FFE7C7 45%,#FFD9A8 100%)}
+.band-dark .lead,.band-bark .lead,.band-plum .lead{color:rgba(255,255,255,.82)}
+
+.qtag{display:inline-flex;align-items:center;gap:.6rem;font-family:'Space Mono',monospace;
+  font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;
+  padding:.4rem .95rem;border-radius:999px;margin-bottom:1.1rem}
+.qtag.t{background:rgba(78,205,196,.18);color:var(--teal-dk);border:1px solid rgba(78,205,196,.45)}
+.band-dark .qtag.t,.band-bark .qtag.t,.band-plum .qtag.t{color:#7FE3DB;background:rgba(78,205,196,.14)}
+h2.q{font-size:clamp(2.1rem,1.1rem + 3.1vw,4.4rem);line-height:1.06;font-weight:700;
+  letter-spacing:-.02em;margin-bottom:0;max-width:none;text-wrap:balance}
+.shead{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(1.4rem,3vw,4.5rem);align-items:end;margin-bottom:.4rem}
+@media (max-width:900px){.shead{grid-template-columns:1fr;align-items:start;gap:1rem}}
+h3{font-size:clamp(1.3rem,.95rem + .95vw,2.05rem);font-weight:600;line-height:1.2;margin-bottom:.7rem;text-wrap:balance}
+h4{font-size:clamp(1.05rem,.9rem + .45vw,1.4rem);font-weight:600;margin-bottom:.4rem;text-wrap:balance}
+.lead{font-size:clamp(1.15rem,.85rem + .75vw,1.75rem);line-height:1.5;color:var(--muted);
+  max-width:none;font-weight:400;margin-bottom:0;text-wrap:pretty}
+p{margin-bottom:1rem;max-width:80ch;text-wrap:pretty}
+strong{font-weight:600;color:inherit}
+.band-dark strong,.band-bark strong,.band-plum strong{color:var(--amber)}
+
+/* ---------- hero ---------- */
+#hero{padding:0;min-height:88vh;display:flex;align-items:center;position:relative;
+  background:linear-gradient(180deg,#0B1A24 0%,#1A2A33 35%,#5B3A2E 72%,#8A4B2A 100%);overflow:hidden}
+#heroArt{position:absolute;inset:0;width:100%;height:100%}
+#hero::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(100deg,rgba(8,14,20,.72) 0%,rgba(8,14,20,.45) 38%,rgba(8,14,20,0) 68%)}
+.herotext{position:relative;z-index:3;max-width:var(--maxw);margin:0 auto;padding:6rem 1.5rem 8rem;width:100%}
+.hero-eyebrow{font-family:'Space Mono',monospace;color:var(--amber);letter-spacing:.24em;
+  text-transform:uppercase;font-size:clamp(.7rem,.6rem + .2vw,.92rem);font-weight:700;margin-bottom:1.2rem}
+h1{font-size:clamp(3.2rem,1.2rem + 8.2vw,10rem);line-height:.9;font-weight:700;color:#fff;
+  letter-spacing:-.035em;margin-bottom:1.4rem;text-shadow:0 6px 40px rgba(0,0,0,.4)}
+h1 em{font-style:normal;background:linear-gradient(100deg,var(--amber),var(--ochre-lt));
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-sub{font-size:clamp(1.15rem,.8rem + .95vw,2rem);color:rgba(255,255,255,.9);max-width:34ch;
+  font-weight:300;line-height:1.4;margin-bottom:2.2rem}
+.scrollcue{display:inline-flex;align-items:center;gap:.7rem;color:#fff;background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.3);padding:.7rem 1.4rem;border-radius:999px;font-weight:500;
+  text-decoration:none;font-size:.95rem;transition:all .2s}
+.scrollcue:hover{background:rgba(255,255,255,.26);transform:translateY(-2px)}
+.scrollcue svg{animation:bob 1.8s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+
+/* ---------- quotes ---------- */
+.quote{position:relative;margin:clamp(2rem,4vw,3.6rem) 0;max-width:none;padding:clamp(1.6rem,3vw,2.8rem) clamp(1.6rem,3vw,3rem);
+  border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);border-left:8px solid var(--amber)}
+.band-dark .quote,.band-bark .quote,.band-plum .quote{background:rgba(255,255,255,.07);
+  box-shadow:none;border:1px solid rgba(255,255,255,.14);border-left:8px solid var(--amber)}
+.quote .mark{position:absolute;top:-.2em;left:.3rem;font-size:6rem;line-height:1;color:var(--amber);
+  opacity:.25;font-weight:700;pointer-events:none}
+.quote blockquote{font-size:clamp(1.35rem,.9rem + 1.5vw,2.6rem);line-height:1.28;font-weight:400;
+  position:relative;z-index:1;max-width:none;text-wrap:balance}
+.quote cite{display:block;margin-top:1rem;font-style:normal;font-family:'Space Mono',monospace;
+  font-size:.85rem;letter-spacing:.06em;color:var(--muted);font-weight:700;text-transform:uppercase}
+.band-dark .quote cite,.band-bark .quote cite,.band-plum .quote cite{color:rgba(255,255,255,.6)}
+.quote.wide{max-width:none}
+.quote-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;margin-top:2rem}
+.miniquote{background:var(--card);border-radius:18px;padding:1.5rem;box-shadow:0 6px 24px rgba(0,0,0,.08);
+  border-top:5px solid var(--teal)}
+.miniquote p{font-size:1.02rem;line-height:1.4;font-weight:500;margin-bottom:.6rem}
+.miniquote span{font-family:'Space Mono',monospace;font-size:.72rem;text-transform:uppercase;
+  letter-spacing:.08em;color:var(--muted);font-weight:700}
+
+/* ---------- cards & grids ---------- */
+.grid{display:grid;gap:1.4rem}
+.g2{grid-template-columns:repeat(auto-fit,minmax(380px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.card p{max-width:none}
+.card{background:var(--card);border-radius:var(--radius);padding:clamp(1.4rem,2vw,2rem);
+  box-shadow:var(--shadow);border-top:6px solid var(--teal);transition:transform .22s,box-shadow .22s}
+.card:hover{transform:translateY(-5px);box-shadow:0 18px 50px rgba(0,0,0,.16)}
+.card.dk{background:rgba(255,255,255,.06);box-shadow:none;border:1px solid rgba(255,255,255,.14);
+  border-top:6px solid var(--teal)}
+.card.dk:hover{background:rgba(255,255,255,.1)}
+.icon{width:clamp(56px,5vw,78px);height:clamp(56px,5vw,78px);margin-bottom:.9rem;display:block}
+.icon-sm{width:46px;height:46px;flex-shrink:0}
+
+/* ---------- think-first box ---------- */
+.think{display:flex;gap:1.1rem;align-items:flex-start;background:rgba(255,217,61,.16);
+  border:2px dashed var(--amber-dk);border-radius:18px;padding:1.3rem 1.7rem;margin:1.8rem 0 2.6rem;max-width:none}
+.band-dark .think,.band-bark .think,.band-plum .think{background:rgba(255,217,61,.1);border-color:rgba(255,217,61,.6)}
+.think svg{width:40px;height:40px;flex-shrink:0}
+.think p{margin:0;font-size:1.05rem;font-weight:500;max-width:none}
+.think .th{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:700;color:var(--amber-dk);display:block;margin-bottom:.25rem}
+.band-dark .think .th,.band-bark .think .th,.band-plum .think .th{color:var(--amber)}
+</style>
+</head>
+<body>
+<style>
+/* ---------- the past vs history diagram ---------- */
+.split{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.6rem;align-items:stretch;margin-top:2rem}
+.split .box{border-radius:var(--radius);padding:clamp(1.5rem,2.2vw,2.4rem);background:var(--card);box-shadow:var(--shadow)}
+.split .box.a{border-top:6px solid var(--blue)}
+.split .box.b{border-top:6px solid var(--ochre)}
+.split .box svg{width:100%;height:auto;max-height:200px;margin-bottom:1rem;border-radius:14px}
+
+/* ---------- source families ---------- */
+.srcgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));align-items:start;gap:1.3rem;margin-top:2.4rem}
+.srccard{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:20px;
+  padding:1.5rem;transition:all .22s;border-top:5px solid var(--teal)}
+.srccard:hover{background:rgba(255,255,255,.12);transform:translateY(-4px)}
+.srccard h4{color:#fff;display:flex;align-items:center;gap:.7rem;margin-bottom:.7rem;font-size:1.2rem;min-height:2.6em}
+.srccard p.blurb{font-size:.95rem;color:rgba(255,255,255,.72);margin-bottom:.9rem;max-width:none}
+.taglist{display:flex;flex-wrap:wrap;gap:.35rem}
+.taglist span{font-size:.78rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);
+  color:rgba(255,255,255,.9);padding:.22rem .62rem;border-radius:999px;font-weight:400;line-height:1.5}
+.countbar{display:flex;flex-wrap:wrap;gap:2.4rem;margin-top:2.6rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.15)}
+.countbar div{min-width:150px}
+.countbar b{display:block;font-family:'Space Mono',monospace;font-size:clamp(2rem,1.2rem + 2vw,3.2rem);
+  color:var(--amber);line-height:1;font-weight:700}
+.countbar small{font-size:.85rem;color:rgba(255,255,255,.7)}
+
+/* ---------- historian steps ---------- */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.3rem;margin-top:2.2rem;counter-reset:s}
+.step{background:var(--card);border-radius:20px;padding:1.5rem;box-shadow:0 8px 30px rgba(0,0,0,.09);
+  position:relative;border-left:6px solid var(--purple)}
+.step::before{counter-increment:s;content:counter(s);position:absolute;top:-14px;right:16px;
+  font-family:'Space Mono',monospace;font-size:2.9rem;font-weight:700;color:rgba(155,93,229,.2);line-height:1}
+.step h4{color:var(--purple);display:flex;align-items:center;gap:.6rem}
+.step p{font-size:.98rem;margin:0;color:var(--muted);max-width:none}
+.jobs{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.2rem}
+.jobs span{background:#fff;border:2px solid var(--teal);color:var(--teal-dk);font-weight:500;
+  padding:.4rem .9rem;border-radius:999px;font-size:.92rem}
+
+/* ---------- timeline ---------- */
+.tl{position:relative;margin-top:3rem;padding-left:0}
+.tl::before{content:'';position:absolute;left:38px;top:10px;bottom:10px;width:4px;
+  background:linear-gradient(180deg,var(--amber),var(--ochre-lt),var(--teal));border-radius:2px}
+.tlitem{position:relative;padding-left:110px;margin-bottom:2.4rem}
+.tlnode{position:absolute;left:0;top:0;width:78px;height:78px;border-radius:50%;
+  background:var(--bark);border:4px solid var(--amber);display:flex;align-items:center;justify-content:center;z-index:2}
+.tlnode svg{width:44px;height:44px}
+.tlbody{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:20px;
+  padding:1.4rem 1.7rem;transition:all .2s}
+.tlbody:hover{background:rgba(255,255,255,.11);transform:translateX(5px)}
+.tldate{font-family:'Space Mono',monospace;font-weight:700;color:var(--amber);font-size:clamp(1rem,.8rem + .5vw,1.35rem);
+  letter-spacing:.02em;display:block;margin-bottom:.15rem}
+.tlbody h4{color:#fff;margin-bottom:.5rem}
+.tlbody p{color:rgba(255,255,255,.8);font-size:1rem;margin:0;max-width:none}
+.tlbody .why{display:block;margin-top:.7rem;padding-top:.7rem;border-top:1px solid rgba(255,255,255,.14);
+  font-size:.92rem;color:var(--teal)}
+.tlbody .why b{color:var(--teal);font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.12em;
+  text-transform:uppercase;display:block;margin-bottom:.15rem}
+.morestrip{margin-top:2.4rem;padding:1.6rem;background:rgba(255,255,255,.05);border-radius:20px;
+  border:1px dashed rgba(255,255,255,.25)}
+.morestrip h4{color:var(--amber);margin-bottom:.8rem}
+.morestrip .taglist span{font-size:.86rem;padding:.3rem .8rem}
+
+/* ---------- people ---------- */
+.people{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.4rem;margin-top:2.4rem}
+.person{background:var(--card);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);
+  transition:transform .22s,box-shadow .22s;display:flex;flex-direction:column}
+.person:hover{transform:translateY(-6px);box-shadow:0 20px 55px rgba(0,0,0,.18)}
+.pmedal{height:150px;display:flex;align-items:center;justify-content:center;position:relative}
+.pmedal svg{width:92px;height:92px}
+.pbody{padding:1.3rem 1.5rem 1.6rem;flex:1;display:flex;flex-direction:column}
+.pname{font-size:1.32rem;font-weight:700;line-height:1.15;margin-bottom:.2rem}
+.pmeta{font-family:'Space Mono',monospace;font-size:.76rem;letter-spacing:.05em;color:var(--muted);
+  text-transform:uppercase;font-weight:700;margin-bottom:.7rem}
+.pbody p{font-size:.98rem;margin:0;max-width:none;color:var(--text)}
+.pfoot{margin-top:auto;padding-top:.9rem;padding-top:.8rem;border-top:2px dotted #e6e0d8;font-size:.9rem;color:var(--teal-dk);font-weight:500}
+.pfirst{display:inline-block;background:var(--amber);color:var(--night);font-size:.7rem;font-weight:700;
+  font-family:'Space Mono',monospace;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .6rem;
+  border-radius:999px;margin-bottom:.5rem}
+
+/* ---------- perspectives ---------- */
+.witness{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.1rem;margin:2rem 0}
+.wcard{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:1.3rem}
+.wcard svg{width:50px;height:50px;margin-bottom:.6rem}
+.wcard b{display:block;color:#fff;font-size:1.02rem;margin-bottom:.3rem}
+.wcard p{font-size:.94rem;color:rgba(255,255,255,.78);margin:0;max-width:none;font-style:italic}
+.twolens{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.4rem;margin-top:1.8rem}
+.lens{border-radius:20px;padding:1.6rem;border:1px solid rgba(255,255,255,.18)}
+.lens.one{background:linear-gradient(150deg,rgba(52,152,219,.24),rgba(52,152,219,.08))}
+.lens.two{background:linear-gradient(150deg,rgba(193,68,14,.3),rgba(193,68,14,.1))}
+.lens h4{color:#fff}
+.lens p{color:rgba(255,255,255,.85);font-size:1rem;max-width:none;margin:0}
+.rule{background:rgba(255,255,255,.08);border-left:6px solid var(--teal);border-radius:0 18px 18px 0;
+  padding:1.5rem 1.9rem;margin-top:2rem;max-width:none}
+.rule p{margin:0;color:#fff;font-size:1.08rem;max-width:none}
+
+/* ---------- why history ---------- */
+.powers{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.4rem;margin-top:2.4rem}
+.power{background:rgba(255,255,255,.72);backdrop-filter:blur(6px);border-radius:var(--radius);
+  padding:1.6rem;border-top:6px solid var(--ochre);box-shadow:0 8px 30px rgba(140,90,43,.14);transition:transform .22s}
+.power:hover{transform:translateY(-5px)}
+.power h4{color:var(--ochre);display:flex;align-items:center;gap:.65rem;margin-bottom:.5rem}
+.power p{font-size:.99rem;margin:0;max-width:none}
+.finale{margin-top:3rem;text-align:center;padding:clamp(2rem,4vw,3.6rem);background:var(--night);
+  border-radius:var(--radius);color:#fff}
+.finale h3{color:var(--amber);font-size:clamp(1.6rem,1rem + 2vw,3rem);margin-bottom:.8rem}
+.finale p{color:rgba(255,255,255,.85);max-width:60ch;margin:0 auto 1rem}
+.finale .big{font-size:clamp(1.1rem,.9rem + .6vw,1.5rem);font-weight:500}
+
+/* ---------- footer ---------- */
+footer{background:var(--night);color:rgba(255,255,255,.6);padding:2.5rem 1.5rem;text-align:center;font-size:.88rem}
+footer p{max-width:70ch;margin:0 auto .5rem}
+
+/* ---------- notices ---------- */
+.notice{max-width:var(--maxw);margin:0 auto;background:#F4EDE4;border:1px solid #E0D2C0;border-left:6px solid var(--earth);
+  border-radius:0 16px 16px 0;padding:1.1rem 1.5rem;font-size:.94rem;color:#5A4632}
+.notice p{margin:0;max-width:none}
+
+
+/* ---------- interactive source tags ---------- */
+.taglist span.qt{cursor:help;position:relative;border-bottom:1px dotted rgba(255,255,255,.55);
+  transition:background .15s,border-color .15s,transform .15s}
+.taglist span.qt:hover,.taglist span.qt:focus-visible,.taglist span.qt.open{
+  background:var(--amber);border-color:var(--amber);color:var(--night);font-weight:500;
+  outline:none;transform:translateY(-1px)}
+.taghint{display:inline-flex;align-items:center;gap:.6rem;margin-top:1.6rem;font-size:.95rem;
+  background:rgba(255,217,61,.14);border:1px solid rgba(255,217,61,.45);color:var(--amber);
+  padding:.55rem 1.1rem;border-radius:999px;font-weight:500}
+.taghint svg{width:20px;height:20px;flex-shrink:0}
+#tagpop{position:fixed;z-index:200;max-width:400px;background:var(--cream);color:var(--text);
+  border-radius:16px;padding:1.1rem 1.3rem;box-shadow:0 18px 50px rgba(0,0,0,.45);
+  border-top:5px solid var(--amber);opacity:0;visibility:hidden;transform:translateY(6px);
+  transition:opacity .15s,transform .15s,visibility .15s;pointer-events:none;font-size:.95rem;line-height:1.45}
+#tagpop.show{opacity:1;visibility:visible;transform:none}
+#tagpop .pt{font-weight:700;font-size:1.1rem;margin-bottom:.55rem;color:var(--ochre)}
+#tagpop .pl{font-family:'Space Mono',monospace;font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;
+  font-weight:700;color:var(--teal-dk);display:block;margin-bottom:.15rem}
+#tagpop .pw{margin-bottom:.75rem}
+#tagpop .pw:last-child{margin-bottom:0}
+#tagpop .pw p{margin:0;max-width:none}
+@media (max-width:640px){#tagpop{max-width:calc(100vw - 2rem)}}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}
+  .scrollcue svg{animation:none}html{scroll-behavior:auto}}
+
+@media (max-width:640px){
+  .tl::before{left:24px}.tlitem{padding-left:78px}.tlnode{width:52px;height:52px}.tlnode svg{width:28px;height:28px}
+  .navbrand span{display:none}
+  section{padding:3rem 1.1rem}
+}
+@media print{nav#topnav,#progress,.scrollcue{display:none}.rv{opacity:1;transform:none}
+  body{background:#fff}section{padding:1.5rem 0;break-inside:avoid}}
+</style>
+
+<div id="progress"></div>
+<nav id="topnav">
+  <div class="navwrap">
+    <div class="navbrand">
+      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="24" cy="24" r="21" stroke="#FFD93D" stroke-width="3"/>
+        <path d="M24 11v14l9 6" stroke="#4ECDC4" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="24" cy="24" r="2.6" fill="#FF6B6B"/>
+      </svg>
+      <span>What Is History?</span>
+    </div>
+    <div class="navlinks">
+      <a href="#q1">1. What is history?</a>
+      <a href="#q2">2. How do we know?</a>
+      <a href="#q3">3. What historians do</a>
+      <a href="#q4">4. Key events</a>
+      <a href="#q5">5. Key people</a>
+      <a href="#q6">6. Perspectives</a>
+      <a href="#q7">7. Why learn it?</a>
+    </div>
+  </div>
+</nav>
+
+<header id="hero">
+  <svg id="heroArt" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="sunG" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#FFE9A8"/><stop offset="100%" stop-color="#E8853B"/>
+      </linearGradient>
+      <linearGradient id="ridge1" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#3E5A63"/><stop offset="100%" stop-color="#2C4149"/>
+      </linearGradient>
+      <linearGradient id="ridge2" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#7A4B36"/><stop offset="100%" stop-color="#5C3728"/>
+      </linearGradient>
+      <linearGradient id="ridge3" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#2A1912"/><stop offset="100%" stop-color="#160D09"/>
+      </linearGradient>
+      <radialGradient id="glow"><stop offset="0%" stop-color="#FFC46B" stop-opacity=".55"/>
+        <stop offset="100%" stop-color="#FFC46B" stop-opacity="0"/></radialGradient>
+    </defs>
+
+    <!-- stars -->
+    <g fill="#FFF6E0">
+      <circle cx="120" cy="90" r="2.2" opacity=".8"/><circle cx="300" cy="52" r="1.6" opacity=".6"/>
+      <circle cx="470" cy="118" r="2.6" opacity=".75"/><circle cx="640" cy="60" r="1.8" opacity=".5"/>
+      <circle cx="820" cy="104" r="2.2" opacity=".7"/><circle cx="980" cy="46" r="1.5" opacity=".55"/>
+      <circle cx="1150" cy="96" r="2.4" opacity=".8"/><circle cx="1320" cy="58" r="1.7" opacity=".6"/>
+      <circle cx="1470" cy="120" r="2.1" opacity=".7"/><circle cx="210" cy="180" r="1.4" opacity=".45"/>
+      <circle cx="1400" cy="200" r="1.6" opacity=".45"/><circle cx="720" cy="168" r="1.5" opacity=".4"/>
+    </g>
+
+    <!-- sun glow + disc -->
+    <circle cx="1120" cy="520" r="330" fill="url(#glow)"/>
+    <circle cx="1120" cy="520" r="128" fill="url(#sunG)"/>
+
+    <!-- distant ridge -->
+    <path d="M0 560 L150 505 L280 545 L420 470 L560 530 L700 480 L860 545 L1000 500 L1180 555 L1330 505 L1470 550 L1600 515 L1600 900 L0 900 Z" fill="url(#ridge1)"/>
+    <!-- mid ridge -->
+    <path d="M0 640 L180 600 L340 645 L520 585 L690 640 L880 600 L1060 655 L1250 605 L1430 650 L1600 615 L1600 900 L0 900 Z" fill="url(#ridge2)"/>
+
+    <!-- ERA SILHOUETTES on the mid ridge, left to right -->
+    <g fill="#20130D">
+      <!-- campfire + two figures with spears -->
+      <path d="M150 640 l6-46 4 46z"/><path d="M172 640 l5-52 4 52z"/>
+      <circle cx="152" cy="586" r="7"/><circle cx="174" cy="580" r="7"/>
+      <rect x="139" y="592" width="3" height="48" rx="1.5"/><rect x="188" y="586" width="3" height="54" rx="1.5"/>
+      <path d="M206 640 q10-22 22 0z" opacity=".9"/>
+      <path d="M212 618 q4-16 10-4 4-12 6 6z" fill="#E8853B" opacity=".9"/>
+      <!-- gum tree -->
+      <path d="M300 640 v-92 M300 592 l-24-30 M300 606 l26-34" stroke="#20130D" stroke-width="6" stroke-linecap="round" fill="none"/>
+      <ellipse cx="272" cy="556" rx="26" ry="16"/><ellipse cx="330" cy="566" rx="30" ry="18"/><ellipse cx="300" cy="534" rx="24" ry="15"/>
+      <!-- tall ship -->
+      <path d="M470 640 h122 l-14 20 h-94z"/>
+      <rect x="497" y="516" width="4" height="124"/><rect x="540" y="496" width="4" height="144"/><rect x="578" y="530" width="4" height="110"/>
+      <path d="M501 522 q34 12 0 40z M501 570 q40 14 0 42z"/>
+      <path d="M544 502 q40 14 0 46z M544 556 q46 16 0 48z"/>
+      <path d="M582 536 q28 10 0 34z"/>
+      <!-- gold rush windlass + tent -->
+      <path d="M700 640 l38-46 38 46z"/>
+      <rect x="792" y="596" width="4" height="44"/><rect x="836" y="596" width="4" height="44"/>
+      <rect x="786" y="588" width="56" height="7" rx="3"/>
+      <path d="M814 595 v26" stroke="#20130D" stroke-width="3"/><rect x="806" y="620" width="16" height="12" rx="2"/>
+      <!-- shearing shed / windmill -->
+      <rect x="900" y="580" width="4" height="60"/>
+      <g stroke="#20130D" stroke-width="4" stroke-linecap="round">
+        <path d="M902 584 l-26-14 M902 584 l28-12 M902 584 l-4 30"/>
+      </g>
+      <!-- bridge arch -->
+      <path d="M1000 640 q86-96 172 0" stroke="#20130D" stroke-width="9" fill="none"/>
+      <rect x="996" y="620" width="180" height="7"/>
+      <rect x="1016" y="586" width="10" height="40"/><rect x="1146" y="586" width="10" height="40"/>
+      <g stroke="#20130D" stroke-width="3">
+        <path d="M1040 623 v-22 M1070 623 v-32 M1100 623 v-35 M1130 623 v-28"/>
+      </g>
+      <!-- city skyline -->
+      <rect x="1300" y="560" width="26" height="80"/><rect x="1332" y="530" width="20" height="110"/>
+      <rect x="1358" y="576" width="30" height="64"/><rect x="1394" y="546" width="18" height="94"/>
+      <rect x="1418" y="588" width="34" height="52"/><rect x="1458" y="562" width="22" height="78"/>
+      <path d="M1342 530 v-30" stroke="#20130D" stroke-width="3"/>
+      <!-- satellite -->
+      <g transform="translate(1240 300) rotate(-18)">
+        <rect x="-8" y="-8" width="16" height="16" rx="3" fill="#20130D" opacity=".75"/>
+        <rect x="-34" y="-6" width="22" height="12" rx="2" fill="#20130D" opacity=".6"/>
+        <rect x="12" y="-6" width="22" height="12" rx="2" fill="#20130D" opacity=".6"/>
+      </g>
+    </g>
+
+    <!-- foreground ridge with hand stencils on rock -->
+    <path d="M0 720 L220 690 L430 735 L650 695 L900 745 L1150 700 L1400 742 L1600 706 L1600 900 L0 900 Z" fill="url(#ridge3)"/>
+    <g fill="#E8B98A" opacity=".5">
+      <path d="M96 812 c0-10 6-16 6-26 0-6 6-6 6 0v14c0-8 6-9 6-1v12c0-7 6-8 6 0v13c0 12-8 20-18 20s-18-8-18-20v-12c0-7 6-7 6 0z"/>
+      <path d="M176 830 c0-10 6-16 6-26 0-6 6-6 6 0v14c0-8 6-9 6-1v12c0-7 6-8 6 0v13c0 12-8 20-18 20s-18-8-18-20v-12c0-7 6-7 6 0z" opacity=".7"/>
+    </g>
+  </svg>
+
+  <div class="herotext">
+    <p class="hero-eyebrow">A big question worth chasing</p>
+    <h1>What is <em>history</em>?</h1>
+    <p class="hero-sub">Sixty-five thousand years of stories happened right here, under your feet. Here is how we know about them, and why it matters that you do.</p>
+    <a class="scrollcue" href="#q1">
+      Start exploring
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </a>
+  </div>
+</header>
+
+<div class="notice" style="margin-top:0;border-radius:0">
+  <p><strong>A respectful note:</strong> Aboriginal and Torres Strait Islander readers are advised that this page discusses people who have passed away. We name them with respect, because their stories belong in Australia's history.</p>
+</div>
+<section id="q1">
+  <div class="wrap">
+    <div class="rv shead">
+      <div class="shead-l"><span class="qtag t">Question One</span>
+        <h2 class="q">What is history?</h2></div>
+      <p class="lead">History is the study of the past. But it is also something people <em>make</em>: the careful, curious work of turning leftover clues into a story we can trust.</p>
+    </div>
+
+    <div class="think rv">
+      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="24" cy="20" r="13" stroke="#D9A800" stroke-width="3"/>
+        <path d="M19 33v4h10v-4M21 41h6" stroke="#D9A800" stroke-width="3" stroke-linecap="round"/>
+        <path d="M24 13v10" stroke="#D9A800" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <p><span class="th">Think first</span>If your whole life so far is "the past", which bits of it would end up in a history book? Who would decide?</p>
+    </div>
+
+    <div class="card rv" style="border-top-color:var(--ochre)">
+      <h3>A definition to hold on to</h3>
+      <p style="font-size:clamp(1.1rem,.9rem + .6vw,1.55rem);line-height:1.45"><strong>History</strong> (noun): the study of past events, especially in human affairs; and the written or spoken record we build from the evidence those events left behind.</p>
+      <p style="color:var(--muted);font-size:.95rem;margin:0">The word comes from the ancient Greek <em>historia</em>, which means "inquiry" or "finding things out by asking". History has always been a question before it was ever an answer.</p>
+    </div>
+
+    <div class="split">
+      <div class="box a rv">
+        <svg viewBox="0 0 400 200" aria-label="An enormous scattered field of moments representing everything that ever happened">
+          <rect width="400" height="200" rx="14" fill="#1B2C38"/>
+          <g fill="#7FB6D9">
+            <circle cx="30" cy="40" r="3" opacity=".9"/><circle cx="72" cy="88" r="2" opacity=".6"/><circle cx="118" cy="34" r="4" opacity=".8"/>
+            <circle cx="156" cy="120" r="2.5" opacity=".7"/><circle cx="196" cy="58" r="3.5" opacity=".85"/><circle cx="238" cy="148" r="2" opacity=".5"/>
+            <circle cx="286" cy="70" r="3" opacity=".8"/><circle cx="330" cy="126" r="4" opacity=".75"/><circle cx="366" cy="46" r="2.5" opacity=".6"/>
+            <circle cx="52" cy="160" r="3" opacity=".7"/><circle cx="98" cy="140" r="2" opacity=".55"/><circle cx="140" cy="76" r="3" opacity=".8"/>
+            <circle cx="182" cy="172" r="2.5" opacity=".6"/><circle cx="222" cy="98" r="3.5" opacity=".8"/><circle cx="262" cy="34" r="2" opacity=".55"/>
+            <circle cx="308" cy="176" r="3" opacity=".7"/><circle cx="352" cy="92" r="2.5" opacity=".65"/><circle cx="16" cy="106" r="2" opacity=".5"/>
+            <circle cx="248" cy="188" r="2" opacity=".4"/><circle cx="388" cy="164" r="2.5" opacity=".5"/><circle cx="64" cy="16" r="2" opacity=".45"/>
+          </g>
+          <text x="200" y="106" text-anchor="middle" font-family="Space Mono, monospace" font-size="19" font-weight="700" fill="#FFF8F0" letter-spacing="4">THE PAST</text>
+          <text x="200" y="128" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="12" fill="#9CC7E0">everything that ever happened</text>
+        </svg>
+        <h3>The past is everything</h3>
+        <p>Every meal, every argument, every walk to the river, every thought that anyone ever had. It is far too big to hold, and almost all of it left no trace at all.</p>
+      </div>
+      <div class="box b rv">
+        <svg viewBox="0 0 400 200" aria-label="A jigsaw map with missing pieces being examined through a magnifying glass">
+          <rect width="400" height="200" rx="14" fill="#F5E6D3"/>
+          <g fill="#E0A96D" stroke="#C1440E" stroke-width="2">
+            <rect x="40" y="40" width="60" height="52" rx="6"/><rect x="106" y="40" width="60" height="52" rx="6"/>
+            <rect x="172" y="40" width="60" height="52" rx="6" fill="#F5E6D3" stroke-dasharray="5 5"/>
+            <rect x="238" y="40" width="60" height="52" rx="6"/>
+            <rect x="40" y="98" width="60" height="52" rx="6" fill="#F5E6D3" stroke-dasharray="5 5"/>
+            <rect x="106" y="98" width="60" height="52" rx="6"/><rect x="172" y="98" width="60" height="52" rx="6"/>
+            <rect x="238" y="98" width="60" height="52" rx="6" fill="#F5E6D3" stroke-dasharray="5 5"/>
+          </g>
+          <g transform="translate(298 118)">
+            <circle cx="0" cy="0" r="42" fill="rgba(78,205,196,.28)" stroke="#2F9E96" stroke-width="6"/>
+            <path d="M30 30 L58 58" stroke="#2F9E96" stroke-width="9" stroke-linecap="round"/>
+          </g>
+          <text x="140" y="180" text-anchor="middle" font-family="Space Mono, monospace" font-size="17" font-weight="700" fill="#C1440E" letter-spacing="3">HISTORY</text>
+        </svg>
+        <h3>History is what we can work out</h3>
+        <p>Historians gather the pieces that survived, test them, and fit them together. Some pieces are missing forever. That is not a failure. It is the puzzle, and it is why there is always more to find.</p>
+      </div>
+    </div>
+
+    <div class="quote rv wide">
+      <span class="mark">&ldquo;</span>
+      <blockquote>To be ignorant of what happened before you were born is to remain forever a child.</blockquote>
+      <cite>Cicero, Roman writer and politician, 46 BCE</cite>
+    </div>
+
+    <div class="rv">
+      <h3 style="margin-top:1rem">Eight words that unlock the whole subject</h3>
+      <p class="lead" style="font-size:1.1rem">Learn these and you can talk about any moment in history, anywhere in the world.</p>
+    </div>
+    <div class="grid g4" style="margin-top:1.6rem">
+      <div class="card rv" style="border-top-color:var(--teal)"><h4>Source</h4><p style="font-size:.96rem;color:var(--muted);margin:0">Anything left behind that tells us something. A diary, a spear, a song, a photo, a shopping list.</p></div>
+      <div class="card rv" style="border-top-color:var(--red)"><h4>Evidence</h4><p style="font-size:.96rem;color:var(--muted);margin:0">What a source proves once you have asked hard questions of it. Sources become evidence when you use them well.</p></div>
+      <div class="card rv" style="border-top-color:var(--amber)"><h4>Chronology</h4><p style="font-size:.96rem;color:var(--muted);margin:0">The order things happened in. Getting the order right is the first job, because it changes what caused what.</p></div>
+      <div class="card rv" style="border-top-color:var(--purple)"><h4>Cause and effect</h4><p style="font-size:.96rem;color:var(--muted);margin:0">Why something happened, and what happened next because of it. Big events almost always have several causes.</p></div>
+      <div class="card rv" style="border-top-color:var(--blue)"><h4>Continuity and change</h4><p style="font-size:.96rem;color:var(--muted);margin:0">What stayed the same and what became different. Both are interesting. Sometimes nothing changing is the story.</p></div>
+      <div class="card rv" style="border-top-color:var(--green)"><h4>Perspective</h4><p style="font-size:.96rem;color:var(--muted);margin:0">The point of view someone had, shaped by who they were, where they stood and what they cared about.</p></div>
+      <div class="card rv" style="border-top-color:var(--orange)"><h4>Significance</h4><p style="font-size:.96rem;color:var(--muted);margin:0">Why an event matters, to whom, and for how long. Significance can change as the years go by.</p></div>
+      <div class="card rv" style="border-top-color:var(--earth)"><h4>Contestability</h4><p style="font-size:.96rem;color:var(--muted);margin:0">Historians disagree, on purpose. Arguing carefully about the evidence is how history gets better.</p></div>
+    </div>
+  </div>
+</section>
+<section id="q2" class="band-dark">
+  <div class="wrap">
+    <div class="rv shead">
+      <div class="shead-l"><span class="qtag t">Question Two</span>
+        <h2 class="q" style="color:#fff">How do people learn about what happened in the past?</h2></div>
+      <p class="lead">The past does not send us letters. It leaves us <em>everything else</em>. Here are eight great families of evidence, and hundreds of ways in.</p>
+    </div>
+
+    <div class="think rv">
+      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="24" cy="20" r="13" stroke="#FFD93D" stroke-width="3"/>
+        <path d="M19 33v4h10v-4M21 41h6" stroke="#FFD93D" stroke-width="3" stroke-linecap="round"/>
+        <path d="M24 13v10" stroke="#FFD93D" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <p style="color:#fff"><span class="th">Think first</span>Everything in your bedroom right now is a source. What would an archaeologist in the year 3000 work out about you from a school bag, a drink bottle and a pair of shoes?</p>
+    </div>
+
+    <p class="taghint rv">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11.5V6a2 2 0 114 0v5"/><path d="M13 11V4.5a2 2 0 114 0V13"/><path d="M17 11.5V8a2 2 0 114 0v7a7 7 0 01-7 7h-2a7 7 0 01-7-7v-1.5a2 2 0 114 0"/></svg>
+      Hover over any label below, or tap it, to find out what it is and what a historian can learn from it.
+    </p>
+
+    <div class="srcgrid">
+
+      <div class="srccard rv" style="border-top-color:#FF6B6B">
+        <h4><svg class="icon-sm" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <path d="M6 20a8 8 0 018-8h22a8 8 0 018 8v10a8 8 0 01-8 8H22l-10 8v-8h-.5A5.5 5.5 0 016 30.5z" fill="#FF6B6B"/>
+          <path d="M48 26h4a8 8 0 018 8v8a8 8 0 01-8 8h-1v7l-9-7H36a8 8 0 01-7.4-5" stroke="#FFD93D" stroke-width="3.5" stroke-linejoin="round" fill="none"/>
+          <g stroke="#fff" stroke-width="3" stroke-linecap="round"><path d="M16 24v3M24 22v7M32 24v3"/></g>
+        </svg>Voices and living memory</h4>
+        <p class="blurb">The oldest and richest source of all. Knowledge carried in people, passed on with enormous care, sometimes for thousands of generations.</p>
+        <div class="taglist"><span class="qt" tabindex="0">oral histories</span><span class="qt" tabindex="0">Songlines</span><span class="qt" tabindex="0">Dreaming stories</span><span class="qt" tabindex="0">Elders' knowledge</span><span class="qt" tabindex="0">ceremony</span><span class="qt" tabindex="0">dance</span><span class="qt" tabindex="0">song</span><span class="qt" tabindex="0">family stories</span><span class="qt" tabindex="0">interviews</span><span class="qt" tabindex="0">eyewitness accounts</span><span class="qt" tabindex="0">recorded testimony</span><span class="qt" tabindex="0">proverbs</span><span class="qt" tabindex="0">place names</span><span class="qt" tabindex="0">nicknames</span></div>
+      </div>
+
+      <div class="srccard rv" style="border-top-color:#FFD93D">
+        <h4><svg class="icon-sm" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <path d="M14 6h24l14 14v38a2 2 0 01-2 2H14a2 2 0 01-2-2V8a2 2 0 012-2z" fill="#F4E9D8"/>
+          <path d="M38 6l14 14H40a2 2 0 01-2-2z" fill="#D9C4A3"/>
+          <g stroke="#8C5A2B" stroke-width="3" stroke-linecap="round"><path d="M20 30h20M20 38h24M20 46h14"/></g>
+          <path d="M54 24L36 42l-6 2 2-6 18-18z" fill="#FFD93D" stroke="#8C5A2B" stroke-width="2.4" stroke-linejoin="round"/>
+        </svg>Written things</h4>
+        <p class="blurb">People wrote far more than they meant to keep. The boring paperwork is often the most useful of all, because nobody bothered to make it look good.</p>
+        <div class="taglist"><span class="qt" tabindex="0">diaries</span><span class="qt" tabindex="0">letters</span><span class="qt" tabindex="0">ships' logs</span><span class="qt" tabindex="0">newspapers</span><span class="qt" tabindex="0">court records</span><span class="qt" tabindex="0">the census</span><span class="qt" tabindex="0">school rolls</span><span class="qt" tabindex="0">wills</span><span class="qt" tabindex="0">maps</span><span class="qt" tabindex="0">treaties</span><span class="qt" tabindex="0">laws</span><span class="qt" tabindex="0">telegrams</span><span class="qt" tabindex="0">receipts</span><span class="qt" tabindex="0">menus</span><span class="qt" tabindex="0">tickets</span><span class="qt" tabindex="0">gravestones</span><span class="qt" tabindex="0">graffiti</span><span class="qt" tabindex="0">shopping lists</span><span class="qt" tabindex="0">recipe books</span><span class="qt" tabindex="0">ration cards</span><span class="qt" tabindex="0">convict records</span><span class="qt" tabindex="0">shipping lists</span></div>
+      </div>
+
+      <div class="srccard rv" style="border-top-color:#9B5DE5">
+        <h4><svg class="icon-sm" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <rect x="6" y="12" width="52" height="40" rx="5" fill="#9B5DE5"/>
+          <rect x="12" y="18" width="40" height="28" rx="3" fill="#EFE3FB"/>
+          <circle cx="24" cy="28" r="5" fill="#FFD93D"/>
+          <path d="M12 46l14-14 9 9 7-6 10 11z" fill="#4ECDC4"/>
+          <rect x="24" y="6" width="16" height="7" rx="2.5" fill="#7A3FC4"/>
+        </svg>Pictures and moving pictures</h4>
+        <p class="blurb">Images show us what words leave out: faces, clothes, streets, weather, and what people wanted to be seen doing.</p>
+        <div class="taglist"><span class="qt" tabindex="0">rock art</span><span class="qt" tabindex="0">engravings</span><span class="qt" tabindex="0">bark paintings</span><span class="qt" tabindex="0">portraits</span><span class="qt" tabindex="0">sketchbooks</span><span class="qt" tabindex="0">photographs</span><span class="qt" tabindex="0">postcards</span><span class="qt" tabindex="0">newsreels</span><span class="qt" tabindex="0">home movies</span><span class="qt" tabindex="0">political cartoons</span><span class="qt" tabindex="0">war posters</span><span class="qt" tabindex="0">advertisements</span><span class="qt" tabindex="0">stamps</span><span class="qt" tabindex="0">banknotes</span><span class="qt" tabindex="0">tapestries</span><span class="qt" tabindex="0">stained glass</span></div>
+      </div>
+
+      <div class="srccard rv" style="border-top-color:#E07A3F">
+        <h4><svg class="icon-sm" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <rect x="4" y="30" width="56" height="10" fill="#C99A6B"/><rect x="4" y="40" width="56" height="9" fill="#A97A4B"/>
+          <rect x="4" y="49" width="56" height="11" fill="#8C5A2B"/>
+          <path d="M42 6l10 10-16 16-10-10z" fill="#C0C7CC"/><path d="M26 22l10 10-8 8-10-10z" fill="#8C5A2B"/>
+          <path d="M20 44c0-5 4-8 8-8s8 3 8 8-4 9-8 9-8-4-8-9z" fill="#E07A3F" stroke="#5C3728" stroke-width="2"/>
+          <circle cx="46" cy="52" r="5" fill="#FFD93D" stroke="#5C3728" stroke-width="2"/>
+        </svg>Things dug out of the ground</h4>
+        <p class="blurb">Archaeology reads the rubbish, the ruins and the layers. Objects cannot lie about themselves, although they can certainly be misread.</p>
+        <div class="taglist"><span class="qt" tabindex="0">stone tools</span><span class="qt" tabindex="0">shell middens</span><span class="qt" tabindex="0">grinding stones</span><span class="qt" tabindex="0">ochre</span><span class="qt" tabindex="0">hearths</span><span class="qt" tabindex="0">post holes</span><span class="qt" tabindex="0">pottery</span><span class="qt" tabindex="0">coins</span><span class="qt" tabindex="0">bottles</span><span class="qt" tabindex="0">buttons</span><span class="qt" tabindex="0">clay pipes</span><span class="qt" tabindex="0">shipwrecks</span><span class="qt" tabindex="0">animal bones</span><span class="qt" tabindex="0">seeds and pollen</span><span class="qt" tabindex="0">fish traps</span><span class="qt" tabindex="0">rubbish pits</span><span class="qt" tabindex="0">burials</span><span class="qt" tabindex="0">foundations</span></div>
+      </div>
+
+      <div class="srccard rv" style="border-top-color:#4ECDC4">
+        <h4><svg class="icon-sm" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <circle cx="32" cy="30" r="22" fill="#E4F7F5" stroke="#2F9E96" stroke-width="3"/>
+          <g stroke="#2F9E96" stroke-width="2.4" fill="none"><circle cx="32" cy="30" r="5"/><circle cx="32" cy="30" r="11"/><circle cx="32" cy="30" r="16.5"/></g>
+          <path d="M14 50h36" stroke="#8C5A2B" stroke-width="4" stroke-linecap="round"/>
+          <path d="M44 12l8-6 4 6-6 8z" fill="#FF6B6B"/>
+          <circle cx="32" cy="30" r="2.6" fill="#FF6B6B"/>
+        </svg>Science and clever machines</h4>
+        <p class="blurb">Technology keeps handing historians brand new eyes. Questions that were unanswerable twenty years ago now have answers.</p>
+        <div class="taglist"><span class="qt" tabindex="0">radiocarbon dating</span><span class="qt" tabindex="0">tree rings</span><span class="qt" tabindex="0">ice cores</span><span class="qt" tabindex="0">ancient DNA</span><span class="qt" tabindex="0">isotope analysis</span><span class="qt" tabindex="0">ground-penetrating radar</span><span class="qt" tabindex="0">LiDAR scanning</span><span class="qt" tabindex="0">satellite imagery</span><span class="qt" tabindex="0">drone surveys</span><span class="qt" tabindex="0">CT scans</span><span class="qt" tabindex="0">X-rays</span><span class="qt" tabindex="0">microscopes</span><span class="qt" tabindex="0">pollen analysis</span><span class="qt" tabindex="0">3D modelling</span><span class="qt" tabindex="0">digital mapping</span></div>
+      </div>
+
+      <div class="srccard rv" style="border-top-color:#2ECC71">
+        <h4><svg class="icon-sm" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <path d="M6 54h52" stroke="#5C3728" stroke-width="4" stroke-linecap="round"/>
+          <path d="M10 54V26l14-10 14 10v28z" fill="#E4EFE7" stroke="#2ECC71" stroke-width="3" stroke-linejoin="round"/>
+          <rect x="18" y="34" width="6" height="8" fill="#2ECC71"/><rect x="26" y="34" width="6" height="8" fill="#2ECC71"/>
+          <rect x="20" y="46" width="10" height="8" fill="#8C5A2B"/>
+          <path d="M42 54V32h6v22M50 54V38h6v16" fill="#C9B79C" stroke="#8C5A2B" stroke-width="2.4"/>
+          <path d="M24 16V8" stroke="#2ECC71" stroke-width="3" stroke-linecap="round"/>
+        </svg>Places that remember</h4>
+        <p class="blurb">Landscapes are documents too. A street plan, a scarred tree or an odd bend in a road can be older than anything written down.</p>
+        <div class="taglist"><span class="qt" tabindex="0">old buildings</span><span class="qt" tabindex="0">ruins</span><span class="qt" tabindex="0">scar trees</span><span class="qt" tabindex="0">rock shelters</span><span class="qt" tabindex="0">cemeteries</span><span class="qt" tabindex="0">monuments</span><span class="qt" tabindex="0">battlefields</span><span class="qt" tabindex="0">bridges</span><span class="qt" tabindex="0">street names</span><span class="qt" tabindex="0">place names in language</span><span class="qt" tabindex="0">farm boundaries</span><span class="qt" tabindex="0">canals</span><span class="qt" tabindex="0">mines</span><span class="qt" tabindex="0">railway lines</span><span class="qt" tabindex="0">gardens</span></div>
+      </div>
+
+      <div class="srccard rv" style="border-top-color:#3498DB">
+        <h4><svg class="icon-sm" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <rect x="6" y="18" width="52" height="38" rx="4" fill="#EAF3FA" stroke="#3498DB" stroke-width="3"/>
+          <path d="M6 26h52" stroke="#3498DB" stroke-width="3"/>
+          <circle cx="12" cy="22" r="1.8" fill="#3498DB"/><circle cx="19" cy="22" r="1.8" fill="#3498DB"/>
+          <path d="M20 48V36c0-4 3-7 7-7s7 3 7 7v12z" fill="#E07A3F" stroke="#8C5A2B" stroke-width="2"/>
+          <circle cx="44" cy="42" r="7" fill="#FFD93D" stroke="#8C5A2B" stroke-width="2"/>
+          <path d="M27 29V25" stroke="#8C5A2B" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M14 10h36" stroke="#3498DB" stroke-width="3" stroke-linecap="round"/>
+        </svg>Objects and collections</h4>
+        <p class="blurb">Museums, archives and libraries are enormous machines for keeping the past usable. Most of what they hold has never been looked at closely by anyone.</p>
+        <div class="taglist"><span class="qt" tabindex="0">museum collections</span><span class="qt" tabindex="0">archives</span><span class="qt" tabindex="0">libraries</span><span class="qt" tabindex="0">clothing</span><span class="qt" tabindex="0">toys</span><span class="qt" tabindex="0">tools</span><span class="qt" tabindex="0">weapons</span><span class="qt" tabindex="0">medals</span><span class="qt" tabindex="0">furniture</span><span class="qt" tabindex="0">musical instruments</span><span class="qt" tabindex="0">trophies</span><span class="qt" tabindex="0">uniforms</span><span class="qt" tabindex="0">jewellery</span><span class="qt" tabindex="0">household objects</span><span class="qt" tabindex="0">time capsules</span></div>
+      </div>
+
+      <div class="srccard rv" style="border-top-color:#FF8400">
+        <h4><svg class="icon-sm" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <rect x="4" y="8" width="42" height="30" rx="4" fill="#2D3436"/>
+          <rect x="9" y="13" width="32" height="20" rx="2" fill="#F4E9D8"/>
+          <path d="M21 17l11 6-11 6z" fill="#FF8400"/>
+          <path d="M19 44h12v5H19z" fill="#2D3436"/><path d="M13 51h24" stroke="#2D3436" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="50" cy="44" r="12" fill="#FF8400"/>
+          <path d="M50 37v7l5 4" stroke="#FFF8F0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>Retellings made today</h4>
+        <p class="blurb">Documentaries, podcasts and museum displays are not sources from the past. They are other people's history, made from sources. Brilliant to learn from, always worth checking.</p>
+        <div class="taglist"><span class="qt" tabindex="0">documentaries</span><span class="qt" tabindex="0">podcasts</span><span class="qt" tabindex="0">museum exhibitions</span><span class="qt" tabindex="0">history books</span><span class="qt" tabindex="0">textbooks</span><span class="qt" tabindex="0">historical fiction</span><span class="qt" tabindex="0">films</span><span class="qt" tabindex="0">video games</span><span class="qt" tabindex="0">re-enactments</span><span class="qt" tabindex="0">guided tours</span><span class="qt" tabindex="0">family trees</span><span class="qt" tabindex="0">digital archives like Trove</span><span class="qt" tabindex="0">encyclopaedias</span><span class="qt" tabindex="0">YouTube explainers</span><span class="qt" tabindex="0">this very web page</span></div>
+      </div>
+
+    </div>
+
+    <div class="countbar rv">
+      <div><b>65,000+</b><small>years of human story to investigate in Australia</small></div>
+      <div><b>250+</b><small>Aboriginal and Torres Strait Islander language groups before 1788</small></div>
+      <div><b>8</b><small>great families of evidence, and endless combinations of them</small></div>
+      <div><b>1</b><small>good question is all it takes to begin</small></div>
+    </div>
+
+    <div class="quote rv wide">
+      <span class="mark">&ldquo;</span>
+      <blockquote>The past is a foreign country: they do things differently there.</blockquote>
+      <cite>L. P. Hartley, The Go-Between, 1953</cite>
+    </div>
+  </div>
+</section>
+<section id="q3">
+  <div class="wrap">
+    <div class="rv shead">
+      <div class="shead-l"><span class="qtag t">Question Three</span>
+        <h2 class="q">What does a historian do?</h2></div>
+      <p class="lead">Think detective, not librarian. A historian finds clues, questions witnesses, tests the story, and only then says what they think happened, and how sure they are.</p>
+    </div>
+
+    <div class="think rv">
+      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="24" cy="20" r="13" stroke="#D9A800" stroke-width="3"/>
+        <path d="M19 33v4h10v-4M21 41h6" stroke="#D9A800" stroke-width="3" stroke-linecap="round"/>
+        <path d="M24 13v10" stroke="#D9A800" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <p><span class="th">Think first</span>A detective and a historian both work out what happened from clues. What is the one big advantage a detective has? What is the one big advantage a historian has?</p>
+    </div>
+
+    <div class="steps">
+      <div class="step rv"><h4>Ask a real question</h4><p>Not "tell me about the gold rush", but "why did so many people leave the goldfields with less money than they arrived with?" A sharp question does half the work.</p></div>
+      <div class="step rv" style="border-left-color:var(--teal)"><h4 style="color:var(--teal-dk)">Go hunting</h4><p>Archives, museums, libraries, family cupboards, digital collections, the ground itself, and above all the people who hold the knowledge.</p></div>
+      <div class="step rv" style="border-left-color:var(--red)"><h4 style="color:var(--red-dk)">Read very closely</h4><p>Slowly, twice. What does the source actually say, before you decide what it means? Historians read handwriting, old spelling, and languages that no longer sound the same.</p></div>
+      <div class="step rv" style="border-left-color:var(--amber-dk)"><h4 style="color:var(--amber-dk)">Interrogate it</h4><p>Who made this? When? Why? Who were they talking to? What did they want the reader to believe? And crucially, who is missing from it?</p></div>
+      <div class="step rv" style="border-left-color:var(--blue)"><h4 style="color:var(--blue)">Cross-check everything</h4><p>One source is a claim. Two sources that agree, made by people who did not talk to each other, is the beginning of evidence.</p></div>
+      <div class="step rv" style="border-left-color:var(--green)"><h4 style="color:var(--green)">Build it, share it, revise it</h4><p>Write the argument. Show the working. Then listen when someone finds a better source, and change your mind gladly. That is the job, not a failure at it.</p></div>
+    </div>
+
+    <div class="grid g2" style="margin-top:2.4rem">
+      <div class="card rv" style="border-top-color:var(--ochre)">
+        <h3>The five questions that crack any source</h3>
+        <p style="color:var(--muted);font-size:1rem">Use these on a 200-year-old letter, or on something you saw online this morning. They work on both.</p>
+        <ol style="padding-left:1.3rem;margin:.6rem 0 0">
+          <li style="margin-bottom:.5rem"><strong>Who made this?</strong> What did they know, and what could they not have known?</li>
+          <li style="margin-bottom:.5rem"><strong>When was it made?</strong> On the day, or fifty years later from memory?</li>
+          <li style="margin-bottom:.5rem"><strong>Why was it made?</strong> To record, to persuade, to sell, to boast, to complain, to remember?</li>
+          <li style="margin-bottom:.5rem"><strong>Who was it for?</strong> People tell a boss something different from what they tell a friend.</li>
+          <li><strong>Who is missing?</strong> Whose voice is not in this room, and why not?</li>
+        </ol>
+      </div>
+      <div class="card rv" style="border-top-color:var(--purple)">
+        <h3>Where this kind of thinking takes people</h3>
+        <p style="color:var(--muted);font-size:1rem">Historical thinking is really just high-quality evidence handling. Nearly every job that involves deciding what is true uses it.</p>
+        <div class="jobs">
+          <span>historian</span><span>archaeologist</span><span>museum curator</span><span>archivist</span><span>conservator</span><span>documentary maker</span><span>journalist</span><span>lawyer</span><span>judge</span><span>detective</span><span>heritage officer</span><span>librarian</span><span>genealogist</span><span>teacher</span><span>author</span><span>game designer</span><span>town planner</span><span>diplomat</span><span>museum educator</span><span>tour guide</span><span>screenwriter</span><span>policy adviser</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="quote rv wide" style="border-left-color:var(--purple)">
+      <span class="mark" style="color:var(--purple)">&ldquo;</span>
+      <blockquote>History is not the past. It is the method we have evolved of organising our ignorance of the past.</blockquote>
+      <cite>Hilary Mantel, BBC Reith Lectures, 2017</cite>
+    </div>
+    <p class="rv" style="max-width:none;color:var(--muted);font-size:1.15rem">In other words: we will never know everything. Historians are not embarrassed by that. They are excited by it, because it means the work is never finished and there is always room for someone new to find something.</p>
+  </div>
+</section>
+<section id="q4" class="band-bark">
+  <div class="wrap">
+    <div class="rv shead">
+      <div class="shead-l"><span class="qtag t">Question Four</span>
+        <h2 class="q" style="color:#fff">What are important events in Australia's history?</h2></div>
+      <p class="lead">Ten moments that changed what happened next. Australia's story does not start in 1788. It starts tens of thousands of years earlier, and it is still being written.</p>
+    </div>
+
+    <div class="think rv">
+      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="24" cy="20" r="13" stroke="#FFD93D" stroke-width="3"/>
+        <path d="M19 33v4h10v-4M21 41h6" stroke="#FFD93D" stroke-width="3" stroke-linecap="round"/>
+        <path d="M24 13v10" stroke="#FFD93D" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <p style="color:#fff"><span class="th">Think first</span>What makes an event "important"? Is it how many people it affected, how long the effects lasted, or how much it changed what people believed? Historians argue about this constantly.</p>
+    </div>
+
+    <div class="tl">
+
+      <div class="tlitem rv">
+        <div class="tlnode"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <rect x="6" y="6" width="52" height="52" rx="10" fill="#8C5A2B"/>
+          <path d="M26 48c-6 0-10-5-10-11V25c0-4 5-4 5 0v8c0-13 5-19 5-25 0-4 5-4 5 0v18c0-6 5-7 5-1v9c0-5 5-6 5 0v6c0 6-4 8-10 8z" fill="#F1D3B2"/>
+        </svg></div>
+        <div class="tlbody">
+          <span class="tldate">65,000+ years ago</span>
+          <h4>The First Peoples, and the oldest continuing cultures on Earth</h4>
+          <p>Aboriginal and Torres Strait Islander peoples have lived on this continent for at least 65,000 years, according to evidence from the Madjedbebe rock shelter in Arnhem Land. Over that time they developed hundreds of languages, sophisticated land management with fire, engineered fish traps, complex trade routes and knowledge systems carried in song, story and Country.</p>
+          <span class="why"><b>Why it matters</b>This is the foundation of Australia's history, not an introduction to it. No other living culture on the planet has a longer unbroken record.</span>
+        </div>
+      </div>
+
+      <div class="tlitem rv">
+        <div class="tlnode"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <rect x="6" y="6" width="52" height="52" rx="10" fill="#3D6B7D"/>
+          <path d="M12 44h40l-6 8H18z" fill="#F1D3B2"/>
+          <rect x="31" y="14" width="3" height="30" fill="#F1D3B2"/>
+          <path d="M34 18q14 6 0 18z" fill="#FFF8F0"/><path d="M31 20q-11 5 0 16z" fill="#E8D5BC"/>
+        </svg></div>
+        <div class="tlbody">
+          <span class="tldate">1606 and before</span>
+          <h4>Visitors from the north and the first recorded European landfall</h4>
+          <p>Makassan sailors from Sulawesi came south each year to harvest sea cucumber, trading and living alongside Yolŋu people in Arnhem Land, leaving words, songs and tamarind trees behind. In 1606 the Dutch ship <em>Duyfken</em>, captained by Willem Janszoon, made the first recorded European landing, on Cape York.</p>
+          <span class="why"><b>Why it matters</b>Australia was never isolated. Long before Britain arrived, this continent was already connected to the world by sea, by trade and by friendship.</span>
+        </div>
+      </div>
+
+      <div class="tlitem rv">
+        <div class="tlnode"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <rect x="6" y="6" width="52" height="52" rx="10" fill="#4A7C59"/>
+          <path d="M14 46c6-14 12-6 18-14s10-14 18-16" stroke="#F1D3B2" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+          <circle cx="20" cy="40" r="4" fill="#FFD93D"/>
+          <path d="M40 44l10 6-10 6z" fill="#F1D3B2"/>
+        </svg></div>
+        <div class="tlbody">
+          <span class="tldate">1770</span>
+          <h4>James Cook charts the east coast</h4>
+          <p>Cook sailed <em>HMB Endeavour</em> up the eastern coastline, mapping it in remarkable detail, meeting Gweagal people at Kamay (Botany Bay) and running aground on the Great Barrier Reef. In August he claimed the coast for Britain at Possession Island.</p>
+          <span class="why"><b>Why it matters</b>Those charts made British settlement possible. It is also a superb example of one event that is remembered very differently depending on who is telling it.</span>
+        </div>
+      </div>
+
+      <div class="tlitem rv">
+        <div class="tlnode"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <rect x="6" y="6" width="52" height="52" rx="10" fill="#8C3B2B"/>
+          <path d="M32 14v34" stroke="#F1D3B2" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="32" cy="14" r="5" fill="none" stroke="#F1D3B2" stroke-width="4"/>
+          <path d="M18 38c0 9 6 14 14 14s14-5 14-14" stroke="#F1D3B2" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <path d="M22 22h20" stroke="#F1D3B2" stroke-width="4" stroke-linecap="round"/>
+        </svg></div>
+        <div class="tlbody">
+          <span class="tldate">26 January 1788</span>
+          <h4>The First Fleet arrives at Sydney Cove</h4>
+          <p>Eleven ships carrying around 1,400 people, most of them convicts, arrived under Captain Arthur Phillip and founded a British penal colony on Gadigal land. For the peoples already living here it was the beginning of invasion, dispossession, disease and profound loss.</p>
+          <span class="why"><b>Why it matters</b>Two entirely truthful stories begin on the same day. Understanding how both can be true is one of the most important things history teaches.</span>
+        </div>
+      </div>
+
+      <div class="tlitem rv">
+        <div class="tlnode"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <rect x="6" y="6" width="52" height="52" rx="10" fill="#B8860B"/>
+          <path d="M14 30h36c0 12-8 18-18 18s-18-6-18-18z" fill="#5C3728"/>
+          <ellipse cx="32" cy="30" rx="18" ry="5" fill="#8C5A2B"/>
+          <circle cx="27" cy="37" r="4.4" fill="#FFD93D"/><circle cx="37" cy="40" r="3.4" fill="#FFD93D"/>
+          <circle cx="33" cy="33" r="2.6" fill="#FFE9A8"/>
+        </svg></div>
+        <div class="tlbody">
+          <span class="tldate">1851</span>
+          <h4>Gold is found, and everything speeds up</h4>
+          <p>Gold discoveries at Ophir in New South Wales and then Ballarat and Bendigo in Victoria set off a rush. People arrived from Britain, Ireland, China, America and Europe. Australia's non-Indigenous population more than doubled in a decade, and tents became cities.</p>
+          <span class="why"><b>Why it matters</b>The gold rushes built Melbourne, brought Australia its first large Chinese communities, and created a confident, argumentative population that started asking for a say.</span>
+        </div>
+      </div>
+
+      <div class="tlitem rv">
+        <div class="tlnode"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <rect x="6" y="6" width="52" height="52" rx="10" fill="#2C5F8D"/>
+          <path d="M32 14v36M14 32h36" stroke="#FFF8F0" stroke-width="3.2"/>
+          <circle cx="32" cy="14" r="3.4" fill="#FFF8F0"/><circle cx="32" cy="50" r="3.4" fill="#FFF8F0"/>
+          <circle cx="14" cy="32" r="3.4" fill="#FFF8F0"/><circle cx="50" cy="32" r="3.4" fill="#FFF8F0"/>
+          <circle cx="32" cy="32" r="4" fill="#FFF8F0"/>
+        </svg></div>
+        <div class="tlbody">
+          <span class="tldate">3 December 1854</span>
+          <h4>The Eureka Stockade at Ballarat</h4>
+          <p>Goldminers, furious about expensive licences and having no vote, built a stockade and swore an oath under a new blue and white flag. Soldiers stormed it before dawn and at least twenty-seven people died. Within a couple of years, almost every demand the miners had made was granted.</p>
+          <span class="why"><b>Why it matters</b>A short, violent morning that Australians have argued about ever since: was it a rebellion, a massacre, or the birth of Australian democracy? Historians still disagree.</span>
+        </div>
+      </div>
+
+      <div class="tlitem rv">
+        <div class="tlnode"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <rect x="6" y="6" width="52" height="52" rx="10" fill="#1F5C4A"/>
+          <g fill="#FFD93D"><circle cx="20" cy="20" r="4"/><circle cx="32" cy="16" r="4"/><circle cx="44" cy="20" r="4"/>
+          <circle cx="20" cy="32" r="4"/><circle cx="44" cy="32" r="4"/></g>
+          <path d="M32 30l3.5 7.4 8 1.1-5.8 5.7 1.4 8-7.1-3.8-7.1 3.8 1.4-8-5.8-5.7 8-1.1z" fill="#FFF8F0"/>
+        </svg></div>
+        <div class="tlbody">
+          <span class="tldate">1 January 1901</span>
+          <h4>Federation: six colonies become one nation</h4>
+          <p>After years of conventions, campaigns and referendums, New South Wales, Victoria, Queensland, South Australia, Western Australia and Tasmania joined together as the Commonwealth of Australia, with its own constitution and parliament. Edmund Barton became the first Prime Minister.</p>
+          <span class="why"><b>Why it matters</b>A nation was created by argument and voting rather than by war, which is genuinely rare. That same parliament also passed laws that excluded people by race, and undoing that took most of the century.</span>
+        </div>
+      </div>
+
+      <div class="tlitem rv">
+        <div class="tlnode"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <rect x="6" y="6" width="52" height="52" rx="10" fill="#6B4226"/>
+          <circle cx="32" cy="34" r="12" fill="#C0392B"/>
+          <circle cx="32" cy="34" r="4" fill="#2D3436"/>
+          <path d="M32 22V10" stroke="#3E7B3E" stroke-width="3.4" stroke-linecap="round"/>
+          <path d="M32 16q7-2 8-8" stroke="#3E7B3E" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </svg></div>
+        <div class="tlbody">
+          <span class="tldate">25 April 1915</span>
+          <h4>Gallipoli and the First World War</h4>
+          <p>Australian and New Zealand troops landed at Gallipoli in what is now Turkey. The campaign failed and around 8,700 Australians died there. Out of a population of fewer than five million, more than 60,000 Australians died in the war overall.</p>
+          <span class="why"><b>Why it matters</b>Anzac Day grew from this into Australia's most widely observed national day. It also shows how nations choose which memories to build an identity on.</span>
+        </div>
+      </div>
+
+      <div class="tlitem rv">
+        <div class="tlnode"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <rect x="6" y="6" width="52" height="52" rx="10" fill="#2E7D5B"/>
+          <rect x="14" y="28" width="36" height="24" rx="4" fill="#F1D3B2"/>
+          <rect x="24" y="24" width="16" height="5" rx="2" fill="#8C5A2B"/>
+          <path d="M26 12h16v12H26z" fill="#FFF8F0" transform="rotate(-8 34 18)"/>
+          <path d="M28 18l3.4 3.6 7-7.6" stroke="#2E7D5B" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg></div>
+        <div class="tlbody">
+          <span class="tldate">27 May 1967</span>
+          <h4>The Referendum</h4>
+          <p>Australians were asked whether Aboriginal people should be counted in the census and whether the federal parliament should be able to make laws for them. More than 90 per cent voted yes, the highest yes vote in any Australian referendum, after a ten-year campaign led largely by Aboriginal activists.</p>
+          <span class="why"><b>Why it matters</b>It did not fix everything, and campaigners always said so. But it showed that ordinary Australians could be persuaded to change the country's founding document, overwhelmingly.</span>
+        </div>
+      </div>
+
+      <div class="tlitem rv">
+        <div class="tlnode"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <rect x="6" y="6" width="52" height="52" rx="10" fill="#1B6A7D"/>
+          <path d="M10 44c6-4 10 2 16-1s10-5 16-2 8 1 12-2v12H10z" fill="#4ECDC4"/>
+          <path d="M22 40c2-10 8-14 10-16 2 2 8 6 10 16z" fill="#3E7B3E"/>
+          <path d="M32 22V14" stroke="#F1D3B2" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="32" cy="12" r="3.4" fill="#FFD93D"/>
+        </svg></div>
+        <div class="tlbody">
+          <span class="tldate">3 June 1992</span>
+          <h4>The Mabo decision</h4>
+          <p>Eddie Koiki Mabo and four other Meriam plaintiffs took a ten-year case to the High Court, arguing that their people had always owned Mer (Murray Island) in the Torres Strait. The Court agreed, and rejected the old legal fiction of <em>terra nullius</em>, the idea that Australia had belonged to nobody.</p>
+          <span class="why"><b>Why it matters</b>Australian law finally recognised that Aboriginal and Torres Strait Islander peoples had their own systems of law and land ownership all along. Native title exists because of it.</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="morestrip rv">
+      <h4>And ten more worth chasing</h4>
+      <div class="taglist">
+        <span>1838 Myall Creek massacre and trials</span><span>1854 the first steam railway</span><span>1902 women win the federal vote</span>
+        <span>1932 the Sydney Harbour Bridge opens</span><span>1942 the bombing of Darwin and the Kokoda campaign</span>
+        <span>1945 onwards, post-war migration reshapes Australia</span><span>1966 the Wave Hill walk-off</span>
+        <span>1972 the Aboriginal Tent Embassy</span><span>1975 the Racial Discrimination Act</span>
+        <span>2000 the Sydney Olympics</span><span>2008 the National Apology to the Stolen Generations</span>
+        <span>2017 the Uluru Statement from the Heart</span>
+      </div>
+    </div>
+
+    <div class="quote rv wide">
+      <span class="mark">&ldquo;</span>
+      <blockquote>Our Aboriginal and Torres Strait Islander tribes were the first sovereign Nations of the Australian continent.</blockquote>
+      <cite>The Uluru Statement from the Heart, 2017</cite>
+    </div>
+  </div>
+</section>
+<section id="q5">
+  <div class="wrap">
+    <div class="rv shead">
+      <div class="shead-l"><span class="qtag t">Question Five</span>
+        <h2 class="q">Who are important people in Australia's past?</h2></div>
+      <p class="lead">Ten lives that bent the story. Some led armies of one. Some changed the law. Some simply refused to accept that things had to stay the way they were.</p>
+    </div>
+
+    <div class="think rv">
+      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="24" cy="20" r="13" stroke="#D9A800" stroke-width="3"/>
+        <path d="M19 33v4h10v-4M21 41h6" stroke="#D9A800" stroke-width="3" stroke-linecap="round"/>
+        <path d="M24 13v10" stroke="#D9A800" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <p><span class="th">Think first</span>Most people who changed history never became famous. Who in your own family or suburb has done something that mattered, that no book will ever mention?</p>
+    </div>
+
+    <div class="people">
+
+      <div class="person rv">
+        <div class="pmedal" style="background:linear-gradient(140deg,#8C5A2B,#5C3728)">
+          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <ellipse cx="24" cy="32" rx="12" ry="21" fill="#E8C39E" stroke="#3E2A1C" stroke-width="2.5"/>
+            <path d="M24 15v34" stroke="#3E2A1C" stroke-width="2.5"/>
+            <path d="M17 24l14 4M17 32l14 4M17 40l14 4" stroke="#C1440E" stroke-width="2.2"/>
+            <path d="M44 8v48" stroke="#F1D3B2" stroke-width="3.6" stroke-linecap="round"/>
+            <path d="M44 8l-4 8h8z" fill="#F1D3B2"/>
+          </svg>
+        </div>
+        <div class="pbody">
+          <div class="pname">Pemulwuy</div>
+          <div class="pmeta">Bidjigal &middot; c.1750 to 1802</div>
+          <p>A Bidjigal warrior from the Botany Bay area who led resistance against the British colony for twelve years, with raids, tactics and a reputation that made him legendary on both sides.</p>
+          <div class="pfoot">He fought for his Country when almost nobody else could.</div>
+        </div>
+      </div>
+
+      <div class="person rv">
+        <div class="pmedal" style="background:linear-gradient(140deg,#3D6B7D,#1F3D4A)">
+          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <path d="M6 46q12 8 24 0" stroke="#F1D3B2" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+            <path d="M18 44V30" stroke="#F1D3B2" stroke-width="2.6"/>
+            <path d="M40 50h18l-3 6H43z" fill="#F1D3B2"/>
+            <rect x="47" y="20" width="2.6" height="30" fill="#F1D3B2"/>
+            <path d="M50 24q9 5 0 12z" fill="#FFF8F0"/>
+            <path d="M34 32h-8" stroke="#FFD93D" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 6"/>
+          </svg>
+        </div>
+        <div class="pbody">
+          <div class="pname">Woollarawarre Bennelong</div>
+          <div class="pmeta">Wangal &middot; c.1764 to 1813</div>
+          <p>Taken captive by Governor Phillip, he became a skilled go-between across two worlds, learned English, sailed to Britain, met King George III and came home again. He wrote the earliest known letter in English by an Aboriginal person.</p>
+          <div class="pfoot">A diplomat in an impossible position, and far more than a footnote.</div>
+        </div>
+      </div>
+
+      <div class="person rv">
+        <div class="pmedal" style="background:linear-gradient(140deg,#4ECDC4,#2F9E96)">
+          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <path d="M8 20h20a4 4 0 014 4v26a4 4 0 00-4-4H8z" fill="#FFF8F0"/>
+            <path d="M56 20H36a4 4 0 00-4 4v26a4 4 0 014-4h20z" fill="#F1D3B2"/>
+            <path d="M32 24v26" stroke="#1F5C55" stroke-width="2.4"/>
+            <circle cx="46" cy="14" r="8" fill="none" stroke="#FFD93D" stroke-width="3.4"/>
+            <g stroke="#FFD93D" stroke-width="3.4" stroke-linecap="round"><path d="M46 2v4M46 22v4M34 14h4M54 14h4"/></g>
+          </svg>
+        </div>
+        <div class="pbody">
+          <div class="pname">David Unaipon</div>
+          <div class="pmeta">Ngarrindjeri &middot; 1872 to 1967</div>
+          <p>Inventor, writer, preacher and scientist. He filed nineteen patent applications, including an improved shearing handpiece, wrote the first book published by an Aboriginal author, and spent decades arguing publicly for Aboriginal rights.</p>
+          <div class="pfoot">Look at an Australian fifty dollar note. That is him.</div>
+        </div>
+      </div>
+
+      <div class="person rv">
+        <div class="pmedal" style="background:linear-gradient(140deg,#C1440E,#7A2A08)">
+          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <path d="M10 34q10-8 20 0 6 5 12 2" stroke="#F1D3B2" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+            <path d="M14 36c0 8 6 14 14 14h8v-6H28c-6 0-10-4-10-10z" fill="#F1D3B2"/>
+            <g fill="#E8C39E"><circle cx="40" cy="20" r="3"/><circle cx="47" cy="26" r="2.4"/><circle cx="35" cy="14" r="2.2"/><circle cx="44" cy="12" r="1.8"/></g>
+            <path d="M52 34h6M52 42h6" stroke="#FFD93D" stroke-width="2.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="pbody">
+          <div class="pname">Vincent Lingiari</div>
+          <div class="pmeta">Gurindji &middot; c.1919 to 1988</div>
+          <p>In 1966 he led two hundred Gurindji stockmen and their families off Wave Hill Station over pay and conditions, then kept walking for nine years over something bigger: their land. In 1975 the Prime Minister poured a handful of soil into his palm and handed it back.</p>
+          <div class="pfoot">A strike that turned into the land rights movement.</div>
+        </div>
+      </div>
+
+      <div class="person rv">
+        <div class="pmedal" style="background:linear-gradient(140deg,#1B6A7D,#0D3B47)">
+          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <path d="M6 46q10-4 16 0t16 0 16 0v8H6z" fill="#4ECDC4"/>
+            <path d="M18 46c3-12 10-18 14-22 4 4 11 10 14 22z" fill="#3E7B3E"/>
+            <rect x="40" y="8" width="20" height="26" rx="3" fill="#FFF8F0" transform="rotate(9 50 21)"/>
+            <g stroke="#1B6A7D" stroke-width="2.4" stroke-linecap="round"><path d="M45 16h12M44 22h13M45 28h9"/></g>
+          </svg>
+        </div>
+        <div class="pbody">
+          <div class="pname">Eddie Koiki Mabo</div>
+          <div class="pmeta">Meriam &middot; 1936 to 1992</div>
+          <p>A gardener at James Cook University who was told, in a conversation over lunch, that his family did not legally own their land on Mer. He said that could not be right, and spent ten years proving it in court. He died five months before he won.</p>
+          <div class="pfoot">One stubborn person changed Australian law forever.</div>
+        </div>
+      </div>
+
+      <div class="person rv">
+        <div class="pmedal" style="background:linear-gradient(140deg,#2E7D5B,#155239)">
+          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <rect x="12" y="10" width="40" height="44" rx="4" fill="#FFF8F0"/>
+            <path d="M20 24l6 7 14-15" stroke="#2E7D5B" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="32" y="48" text-anchor="middle" font-family="Space Mono, monospace" font-size="15" font-weight="700" fill="#2E7D5B">YES</text>
+          </svg>
+        </div>
+        <div class="pbody">
+          <div class="pname">Faith Bandler</div>
+          <div class="pmeta">Australian South Sea Islander &middot; 1918 to 2015</div>
+          <p>Her father was kidnapped from Vanuatu and forced to work in Queensland cane fields. She grew up to lead the ten-year campaign for the 1967 referendum, travelling the country persuading ordinary Australians to vote yes. More than nine in ten did.</p>
+          <div class="pfoot">She proved that patient campaigning can shift a whole nation.</div>
+        </div>
+      </div>
+
+      <div class="person rv">
+        <div class="pmedal" style="background:linear-gradient(140deg,#1F5C4A,#0E332A)">
+          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <g fill="#FFD93D" opacity=".85"><circle cx="16" cy="18" r="4"/><circle cx="32" cy="12" r="4"/><circle cx="48" cy="18" r="4"/>
+            <circle cx="14" cy="34" r="4"/><circle cx="50" cy="34" r="4"/></g>
+            <path d="M32 26l4.2 8.7 9.6 1.3-7 6.8 1.7 9.5L32 47.8l-8.5 4.5 1.7-9.5-7-6.8 9.6-1.3z" fill="#FFF8F0"/>
+          </svg>
+        </div>
+        <div class="pbody">
+          <div class="pname">Sir Edmund Barton</div>
+          <div class="pmeta">First Prime Minister &middot; 1849 to 1920</div>
+          <p>He spent more than a decade travelling, arguing and drafting to persuade six separate colonies to become one country, then became Australia's first Prime Minister in 1901 and later a founding judge of the High Court.</p>
+          <div class="pfoot">He also helped pass laws that excluded people by race, which Australians spent the next century undoing.</div>
+        </div>
+      </div>
+
+      <div class="person rv">
+        <div class="pmedal" style="background:linear-gradient(140deg,#9B5DE5,#5E2E96)">
+          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <path d="M10 50h44" stroke="#FFF8F0" stroke-width="4" stroke-linecap="round"/>
+            <path d="M14 50V28h36v22" fill="#F1D3B2"/>
+            <path d="M10 28L32 12l22 16z" fill="#FFF8F0"/>
+            <rect x="21" y="34" width="6" height="16" fill="#9B5DE5"/><rect x="37" y="34" width="6" height="16" fill="#9B5DE5"/>
+            <circle cx="32" cy="40" r="6" fill="#FFD93D"/>
+          </svg>
+        </div>
+        <div class="pbody">
+          <div class="pname">Edith Cowan</div>
+          <div class="pmeta">First woman in an Australian parliament &middot; 1861 to 1932</div>
+          <p>A social reformer who campaigned for women's and children's welfare, helped found a children's court, and in 1921 became the first woman elected to any Australian parliament. In her first speech she pointed out how strange it was that she was the only one.</p>
+          <div class="pfoot">She is on the fifty dollar note too. Look at the other side.</div>
+        </div>
+      </div>
+
+      <div class="person rv">
+        <div class="pmedal" style="background:linear-gradient(140deg,#3498DB,#1A5F8F)">
+          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <circle cx="32" cy="34" r="20" fill="#FFF8F0" stroke="#1A5F8F" stroke-width="3"/>
+            <circle cx="32" cy="34" r="13" fill="#E4F1E8"/>
+            <g fill="#4A9E5C" opacity=".9"><circle cx="27" cy="30" r="4"/><circle cx="36" cy="35" r="3.2"/><circle cx="30" cy="40" r="2.6"/><circle cx="38" cy="27" r="2.2"/></g>
+            <rect x="12" y="10" width="40" height="6" rx="3" fill="#3498DB"/>
+          </svg>
+        </div>
+        <div class="pbody">
+          <div class="pname">Howard Florey</div>
+          <div class="pmeta">Scientist &middot; 1898 to 1968</div>
+          <p>An Adelaide-born scientist who took Alexander Fleming's forgotten mould and, with his Oxford team, turned it into penicillin, a medicine that could actually be made and given to people. It arrived just in time for the Second World War.</p>
+          <div class="pfoot">Often described as the Australian whose work saved the most lives, by a very long way.</div>
+        </div>
+      </div>
+
+      <div class="person rv">
+        <div class="pmedal" style="background:linear-gradient(140deg,#FF8400,#B85800)">
+          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <path d="M6 32s10-14 26-14 26 14 26 14-10 14-26 14S6 32 6 32z" fill="#FFF8F0" stroke="#8C4A00" stroke-width="2.6"/>
+            <circle cx="32" cy="32" r="10" fill="#3498DB"/><circle cx="32" cy="32" r="4.6" fill="#2D3436"/>
+            <circle cx="28" cy="28" r="2.2" fill="#FFF8F0"/>
+          </svg>
+        </div>
+        <div class="pbody">
+          <div class="pname">Fred Hollows</div>
+          <div class="pmeta">Eye surgeon &middot; 1929 to 1993</div>
+          <p>He was appalled by the rates of blindness he found in remote Aboriginal communities and did something about it, then took the same work to Nepal, Eritrea and Vietnam, and set up factories so poor countries could make their own cheap lenses.</p>
+          <div class="pfoot">Millions of people can see because of decisions he made.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="card rv" style="border-top-color:var(--amber);margin-top:2.4rem">
+      <h3>Twelve more people worth meeting</h3>
+      <div class="jobs" style="margin-top:.8rem">
+        <span>Barangaroo</span><span>Truganini</span><span>Bungaree</span><span>Caroline Chisholm</span><span>Mary MacKillop</span>
+        <span>Henry Parkes</span><span>Douglas Mawson</span><span>Nancy Bird Walton</span><span>Albert Namatjira</span>
+        <span>Oodgeroo Noonuccal</span><span>Neville Bonner</span><span>Evonne Goolagong Cawley</span><span>Cathy Freeman</span>
+      </div>
+    </div>
+
+    <div class="quote-strip">
+      <div class="miniquote rv"><p>"History is who we are and why we are the way we are."</p><span>David McCullough, historian</span></div>
+      <div class="miniquote rv" style="border-top-color:var(--red)"><p>"We are not makers of history. We are made by history."</p><span>Martin Luther King Jr</span></div>
+      <div class="miniquote rv" style="border-top-color:var(--purple)"><p>"A people without the knowledge of their past history, origin and culture is like a tree without roots."</p><span>Marcus Garvey</span></div>
+    </div>
+  </div>
+</section>
+<section id="q6" class="band-plum">
+  <div class="wrap">
+    <div class="rv shead">
+      <div class="shead-l"><span class="qtag t">Question Six</span>
+        <h2 class="q" style="color:#fff">Do people have different perspectives about history?</h2></div>
+      <p class="lead">Always. And here is the surprising part: that is not a problem with history. It is the most interesting thing about it.</p>
+    </div>
+
+    <div class="think rv">
+      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="24" cy="20" r="13" stroke="#FFD93D" stroke-width="3"/>
+        <path d="M19 33v4h10v-4M21 41h6" stroke="#FFD93D" stroke-width="3" stroke-linecap="round"/>
+        <path d="M24 13v10" stroke="#FFD93D" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <p style="color:#fff"><span class="th">Think first</span>Think of the last argument you had with a sibling or friend. If you both wrote down what happened, would the two accounts match? Were either of you lying?</p>
+    </div>
+
+    <div class="rv" style="margin-top:2.4rem">
+      <h3 style="color:#fff">Start with something that happened at lunchtime</h3>
+      <p style="color:rgba(255,255,255,.85);max-width:none">A handball game. Someone slams the ball, it hits another player in the face, and there is a lot of shouting. Four people saw it. Here is what each of them honestly remembers.</p>
+    </div>
+
+    <div class="witness">
+      <div class="wcard rv">
+        <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <circle cx="32" cy="22" r="12" fill="#FF6B6B"/><path d="M12 56c0-11 9-18 20-18s20 7 20 18z" fill="#FF6B6B"/>
+          <path d="M44 20l14-6v12z" fill="#FFD93D" opacity=".7"/>
+        </svg>
+        <b>The one who hit the ball</b>
+        <p>"It was a normal shot. She stepped forward into it. I called out sorry straight away and nobody listened to me."</p>
+      </div>
+      <div class="wcard rv">
+        <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <circle cx="32" cy="22" r="12" fill="#4ECDC4"/><path d="M12 56c0-11 9-18 20-18s20 7 20 18z" fill="#4ECDC4"/>
+          <path d="M20 20L6 14v12z" fill="#FFD93D" opacity=".7"/>
+        </svg>
+        <b>The one who was hit</b>
+        <p>"He smashed it at me on purpose. He has been doing it all week. It really hurt and everyone just laughed."</p>
+      </div>
+      <div class="wcard rv">
+        <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <circle cx="32" cy="22" r="12" fill="#FFD93D"/><path d="M12 56c0-11 9-18 20-18s20 7 20 18z" fill="#FFD93D"/>
+          <path d="M32 8v-6M20 12l-4-5M44 12l4-5" stroke="#FFF" stroke-width="2.6" stroke-linecap="round"/>
+        </svg>
+        <b>The teacher on duty</b>
+        <p>"I was on the far side near the canteen. I heard a bang and then screaming. By the time I got there, three children were crying."</p>
+      </div>
+      <div class="wcard rv">
+        <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <circle cx="32" cy="22" r="12" fill="#9B5DE5"/><path d="M12 56c0-11 9-18 20-18s20 7 20 18z" fill="#9B5DE5"/>
+          <path d="M44 44l12 8M20 44L8 52" stroke="#FFD93D" stroke-width="2.6" stroke-linecap="round" opacity=".7"/>
+        </svg>
+        <b>His best friend</b>
+        <p>"She had already been arguing with him. Honestly, she kind of started it. He would never do that on purpose."</p>
+      </div>
+    </div>
+
+    <div class="grid g2" style="margin-top:1rem">
+      <div class="card dk rv" style="border-top-color:var(--amber)">
+        <h4 style="color:#fff">Why the accounts differ</h4>
+        <p style="color:rgba(255,255,255,.82);max-width:none">Nobody here is lying. They differ because of <strong>where they were standing</strong>, <strong>what they could see and hear</strong>, <strong>what they already believed about each other</strong>, and <strong>what they wanted to be true</strong>. Change any one of those and you get a different honest account.</p>
+      </div>
+      <div class="card dk rv" style="border-top-color:var(--teal)">
+        <h4 style="color:#fff">Now scale it up</h4>
+        <p style="color:rgba(255,255,255,.82);max-width:none">Now imagine the event is a war, or a ship arriving, or a law being passed, and the witnesses are separated by two hundred years, several languages and a great deal at stake. That is exactly what historians work with, every single day.</p>
+      </div>
+    </div>
+
+    <div class="rv" style="margin-top:3rem">
+      <h3 style="color:#fff">The Australian example everybody knows</h3>
+      <p style="color:rgba(255,255,255,.85);max-width:none">One date. 26 January 1788. The very same event, remembered in completely different ways by people who are all Australians.</p>
+    </div>
+    <div class="twolens">
+      <div class="lens one rv">
+        <h4>Australia Day</h4>
+        <p>For many Australians the date marks the beginning of the country they live in: the arrival that led to the towns, the farms, the parliament, the migration story, the flag and the barbecue on the beach. It is a day for celebrating what has been built and who has come to share it.</p>
+      </div>
+      <div class="lens two rv">
+        <h4>Invasion Day, or Survival Day</h4>
+        <p>For many Aboriginal and Torres Strait Islander people the same date marks the start of invasion: land taken, families broken, languages lost, thousands of deaths. Some call it Survival Day instead, because their cultures are still here, still strong, more than two centuries later.</p>
+      </div>
+    </div>
+
+    <div class="rule rv">
+      <p><strong>The rule that stops this getting silly:</strong> having different perspectives does not mean every claim is equally true. "Some people found the day joyful and some found it devastating" is perspective, and both are real. "Nobody was living here in 1788" is not a perspective, it is simply wrong, and the evidence buries it. Historians weigh evidence. They do not shrug.</p>
+    </div>
+
+    <div class="grid g3" style="margin-top:2rem">
+      <div class="card dk rv" style="border-top-color:var(--red)">
+        <h4 style="color:#fff">Perspective</h4>
+        <p style="color:rgba(255,255,255,.8);max-width:none;font-size:.98rem">An honest view shaped by who you are and where you stood. Several can be true at once.</p>
+      </div>
+      <div class="card dk rv" style="border-top-color:var(--amber)">
+        <h4 style="color:#fff">Bias</h4>
+        <p style="color:rgba(255,255,255,.8);max-width:none;font-size:.98rem">A lean in one direction, often without meaning to. Everyone has it. Naming it is how you handle it.</p>
+      </div>
+      <div class="card dk rv" style="border-top-color:var(--teal)">
+        <h4 style="color:#fff">Propaganda</h4>
+        <p style="color:rgba(255,255,255,.8);max-width:none;font-size:.98rem">Deliberately shaping what people believe. Still a brilliant source, just not about what it claims to be about.</p>
+      </div>
+    </div>
+
+    <div class="quote rv wide" style="margin-top:2.6rem">
+      <span class="mark">&ldquo;</span>
+      <blockquote>Until the lion learns to write, every story will glorify the hunter.</blockquote>
+      <cite>African proverb</cite>
+    </div>
+    <p class="rv" style="color:rgba(255,255,255,.85);max-width:none;font-size:1.15rem">This is why the best question a young historian can ask is not "what happened?" but <strong>"whose voice is missing, and how could I go and find it?"</strong> A great deal of the most exciting history being written right now is exactly that: people finding the lions.</p>
+  </div>
+</section>
+<section id="q7" class="band-warm">
+  <div class="wrap">
+    <div class="rv shead">
+      <div class="shead-l"><span class="qtag t">Question Seven</span>
+        <h2 class="q">Should we learn about history? Why?</h2></div>
+      <p class="lead" style="color:#6B4226">Yes. Not because it is on the timetable, but because it hands you eight things that are genuinely hard to get any other way.</p>
+    </div>
+
+    <div class="powers">
+
+      <div class="power rv">
+        <h4><svg class="icon-sm" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <path d="M10 12h20a6 6 0 016 6v34a6 6 0 00-6-6H10z" fill="#FFF8F0" stroke="#C1440E" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M54 12H34a6 6 0 00-6 6v34a6 6 0 016-6h20z" fill="#F4E3CE" stroke="#C1440E" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M32 18v34" stroke="#C1440E" stroke-width="3"/>
+          <circle cx="46" cy="10" r="4" fill="#FFD93D"/>
+        </svg>The greatest story ever told</h4>
+        <p>Empires, shipwrecks, escapes, inventions, betrayals, sixty-five thousand years of people being brave and clever and ridiculous. And it is not a made-up story. It actually happened, on the ground you are standing on.</p>
+      </div>
+
+      <div class="power rv" style="border-top-color:var(--teal-dk)">
+        <h4 style="color:var(--teal-dk)"><svg class="icon-sm" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <path d="M32 6l22 9v18c0 14-9 22-22 25-13-3-22-11-22-25V15z" fill="#E4F7F5" stroke="#2F9E96" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M22 32l7 8 14-15" stroke="#2F9E96" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>A shield against being fooled</h4>
+        <p>History trains you to ask who made this, why, and what they left out. That is precisely the skill you need against dodgy headlines, edited videos and confident people online who are simply making things up.</p>
+      </div>
+
+      <div class="power rv" style="border-top-color:var(--blue)">
+        <h4 style="color:var(--blue)"><svg class="icon-sm" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <circle cx="32" cy="32" r="24" fill="#EAF3FA" stroke="#3498DB" stroke-width="3"/>
+          <path d="M8 32h48M32 8c8 10 8 38 0 48M32 8c-8 10-8 38 0 48" stroke="#3498DB" stroke-width="2.6" fill="none"/>
+          <circle cx="44" cy="22" r="4" fill="#FFD93D"/>
+        </svg>It explains why things are the way they are</h4>
+        <p>Why the borders are there. Why we drive on the left. Why some suburbs have money and others do not. Why certain days are holidays. None of it is random. All of it has a reason, and the reason is history.</p>
+      </div>
+
+      <div class="power rv" style="border-top-color:var(--red-dk)">
+        <h4 style="color:var(--red-dk)"><svg class="icon-sm" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <path d="M32 54S8 40 8 24C8 15 15 9 23 9c5 0 8 3 9 5 1-2 4-5 9-5 8 0 15 6 15 15 0 16-24 30-24 30z" fill="#FF6B6B"/>
+          <path d="M24 24c2 3 6 3 8 0M32 24c2 3 6 3 8 0" stroke="#FFF8F0" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+        </svg>You get to live a thousand lives</h4>
+        <p>Standing in someone else's shoes across two centuries and half a world is the best empathy training ever invented. Understanding why people did things you find shocking is not the same as excusing them. It is much harder, and much more useful.</p>
+      </div>
+
+      <div class="power rv" style="border-top-color:var(--earth)">
+        <h4 style="color:var(--earth)"><svg class="icon-sm" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <path d="M32 56V30" stroke="#8C5A2B" stroke-width="4" stroke-linecap="round"/>
+          <path d="M32 38L16 24M32 34l16-14M32 46L20 38M32 44l14-8" stroke="#8C5A2B" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="16" cy="22" r="6" fill="#2ECC71"/><circle cx="48" cy="18" r="6" fill="#2ECC71"/>
+          <circle cx="19" cy="37" r="5" fill="#4ECDC4"/><circle cx="47" cy="35" r="5" fill="#4ECDC4"/>
+          <circle cx="32" cy="12" r="6" fill="#FFD93D"/>
+        </svg>It tells you where you come from</h4>
+        <p>Your family, your suburb, your school, your Country. Every one of them has a story with you at the end of it, and most of those stories have never been written down by anyone. Somebody has to. It might as well be you.</p>
+      </div>
+
+      <div class="power rv" style="border-top-color:var(--purple)">
+        <h4 style="color:var(--purple)"><svg class="icon-sm" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <path d="M32 8a18 18 0 00-11 32c1.6 1.4 2 3 2 5h18c0-2 .4-3.6 2-5A18 18 0 0032 8z" fill="#FFD93D" stroke="#7A3FC4" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M25 51h14M27 57h10" stroke="#7A3FC4" stroke-width="3.4" stroke-linecap="round"/>
+        </svg>It proves that things can change</h4>
+        <p>Every rule you think is permanent was once new, argued over, and opposed. Women could not vote. Children worked in mines. If it was different before, it can be different again. History is the strongest evidence there is that the future is not fixed.</p>
+      </div>
+
+      <div class="power rv" style="border-top-color:var(--orange)">
+        <h4 style="color:var(--orange)"><svg class="icon-sm" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <path d="M24 20a10 10 0 1114 9v6h-8v-9a5 5 0 10-5-5z" fill="#FF8400"/>
+          <circle cx="32" cy="48" r="5" fill="#FF8400"/>
+          <circle cx="32" cy="32" r="26" fill="none" stroke="#FF8400" stroke-width="3" stroke-dasharray="6 7"/>
+        </svg>It is full of unsolved mysteries</h4>
+        <p>Where did the Mahogany Ship go? What happened to Ludwig Leichhardt? Whose footprints are at Willandra Lakes? Nobody knows. These are real open questions, and some of them will be answered by people who are twelve right now.</p>
+      </div>
+
+      <div class="power rv" style="border-top-color:var(--green)">
+        <h4 style="color:var(--green)"><svg class="icon-sm" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <path d="M12 52V28M26 52V16M40 52V34M54 52V22" stroke="#2ECC71" stroke-width="7" stroke-linecap="round"/>
+          <path d="M6 58h52" stroke="#1E8A4C" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="26" cy="10" r="4" fill="#FFD93D"/>
+        </svg>It makes you formidable</h4>
+        <p>Reading closely, weighing evidence, spotting a weak argument, writing something people believe. Employers pay a great deal for those, and no software has taken them over yet. History students end up as lawyers, journalists, curators, film-makers and leaders.</p>
+      </div>
+
+    </div>
+
+    <div class="quote-strip" style="margin-top:2.6rem">
+      <div class="miniquote rv" style="border-top-color:var(--ochre)"><p>"If you don't know history, then you don't know anything. You are a leaf that doesn't know it is part of a tree."</p><span>Michael Crichton, novelist</span></div>
+      <div class="miniquote rv" style="border-top-color:var(--red)"><p>"History, despite its wrenching pain, cannot be unlived, but if faced with courage, need not be lived again."</p><span>Maya Angelou, poet</span></div>
+      <div class="miniquote rv" style="border-top-color:var(--purple)"><p>"History is the memory of things said and done."</p><span>Carl Becker, historian</span></div>
+    </div>
+
+    <div class="finale rv">
+      <h3>You are already a historian</h3>
+      <p class="big">You have told someone what happened at lunchtime. You have worked out who ate the last biscuit from the crumbs. You have listened to a grandparent describe a world that no longer exists.</p>
+      <p>That is the whole job. Evidence, questions, care, and a story you can defend. The only difference is scale.</p>
+      <p style="color:var(--amber);font-weight:600;margin-top:1.4rem">So: what is the one question about the past that you actually want the answer to? Start there. That is exactly how every historian who has ever lived got started.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Made for Year 6 historians. Every fact on this page can be checked, and checking it is entirely the point.</p>
+  <p style="opacity:.65">If you find something here that the evidence does not support, say so. That is not rudeness. That is history.</p>
+</footer>
+
+<script>
+(function(){
+  var prog=document.getElementById('progress');
+  function onScroll(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-h.clientHeight;
+    prog.style.width=(max>0?(h.scrollTop||document.body.scrollTop)/max*100:0)+'%';
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var links=Array.prototype.slice.call(document.querySelectorAll('.navlinks a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  var spy=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        var i=secs.indexOf(e.target);
+        links.forEach(function(l,j){l.classList.toggle('active',j===i);});
+      }
+    });
+  },{rootMargin:'-45% 0px -50% 0px'});
+  secs.forEach(function(s){if(s)spy.observe(s);});
+
+  var rv=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{rootMargin:'0px 0px -8% 0px',threshold:.06});
+    rv.forEach(function(el){io.observe(el);});
+  } else {
+    rv.forEach(function(el){el.classList.add('in');});
+  }
+})();
+</script>
+
+<div id="tagpop" role="tooltip" aria-hidden="true"></div>
+<script>
+(function(){
+  var D={"oral histories":["Spoken accounts of the past, recorded from people who lived through events or who carry knowledge passed down to them.","What events felt like from the inside, and details that never once made it onto paper."],"Songlines":["Aboriginal song cycles that map Country, recording routes, waterholes, landforms and law across enormous distances.","How people navigated, traded and managed land, and how knowledge stayed accurate across thousands of years."],"Dreaming stories":["Aboriginal and Torres Strait Islander accounts of creation, law and Country, held and told with great responsibility.","How communities explain their world and their obligations, and sometimes real events such as rising seas or volcanoes."],"Elders' knowledge":["Understanding held by senior members of a community who have been entrusted to keep it and pass it on.","Language, law, land management and family connection that exist in no written record anywhere."],"ceremony":["Formal events with set actions, words, objects and roles, repeated across generations.","What a community treats as sacred, and how it marks the big moments of a life."],"dance":["Movement performed to tell a story, mark an event or teach something, usually alongside song.","Knowledge stored in bodies rather than books, and what a group celebrates or mourns."],"song":["Words set to music, which people remember far more accurately than plain speech.","What ordinary people thought about work, love, war and their bosses, in their own words."],"family stories":["Accounts passed down inside a family about ancestors, journeys, hard times and jokes.","How big events reached individual households, and details no official record bothered to keep."],"interviews":["A historian asking someone questions and recording the answers, often decades after the event.","Motives, feelings and everyday detail, plus the chance to ask exactly what you need to know."],"eyewitness accounts":["A description by someone who was actually there and saw it happen.","Vivid on-the-spot detail. Memory is unreliable, so historians always hunt for a second witness."],"recorded testimony":["Formal statements given to a court, an inquiry or an archive, usually taped or transcribed.","Careful accounts given under pressure, and what people were prepared to say officially."],"proverbs":["Short well-worn sayings that carry a piece of advice or a warning.","What a society thought was obvious common sense, which is exactly what nobody writes down."],"place names":["The names people gave to rivers, hills, suburbs and streets.","Who was there, what language they spoke, what they found there, and who later renamed it."],"nicknames":["Informal names given to people, places, ships or machines.","Affection, insult and attitude. What people really thought, rather than what they wrote officially."],"diaries":["A private dated record someone kept for themselves, usually written the same day.","Honest opinion and daily detail, written before anyone knew how the story was going to end."],"letters":["Messages written by one person to another, often across long distances.","Relationships, news, gossip, and how information travelled before telephones existed."],"ships' logs":["The official daily record kept aboard a ship: position, weather, cargo, crew and incidents.","Exact routes and dates, plus everything that happened at sea where no one on land could see."],"newspapers":["Printed daily or weekly accounts of events, opinion and advertising.","What people were told at the time, what was thought newsworthy, and what things cost."],"court records":["Written accounts of trials: the charges, the evidence, witness statements and sentences.","Ordinary people's lives in close detail, especially poor people who appear in no other record."],"the census":["A count of everyone in a country, taken every few years, with details of each household.","Population, jobs, ages and living conditions, and who the government chose to count or ignore."],"school rolls":["Registers listing which pupils attended a school, and when.","Where families lived, how long children stayed at school, and who was kept out of it."],"wills":["Legal documents setting out who inherits a person's property after they die.","What people owned, who they cared about, and what an ordinary household actually contained."],"maps":["Drawings of places showing what the mapmaker knew, thought important, or wanted others to believe.","What was known, what was being claimed, and which names and borders were being imposed."],"treaties":["Formal written agreements between groups or nations.","What each side promised, what they demanded, and how often the promise was later broken."],"laws":["Written rules that a society decided to enforce.","What people were doing that authorities wanted stopped. A law is evidence of the behaviour it bans."],"telegrams":["Short urgent messages sent along electric wires, charged by the word.","Speed and crisis. Telegrams carried the news that could not wait, in as few words as possible."],"receipts":["Proof that something was bought, with the date, the item and the price.","Prices, wages, trade routes, and what ordinary households were actually spending money on."],"menus":["Lists of the food a restaurant, ship or hotel offered, usually with prices.","Diet, fashion, the cost of living, and which ingredients could be got at that time of year."],"tickets":["Small printed proofs of a journey, a seat or an entry.","Who travelled where, what things cost, and what people did to enjoy themselves."],"gravestones":["Carved stone markers naming who is buried there, often with dates of birth and death.","Life expectancy, epidemics, family groups, languages, faiths, and how people wished to be remembered."],"graffiti":["Unofficial writing or drawing scratched or painted where it was not supposed to be.","What ordinary and often powerless people thought, written when they believed nobody important was watching."],"shopping lists":["A quick note of what someone needed to buy.","Everyday diet and household routine, jotted down with no thought of ever being read by a historian."],"recipe books":["Collections of cooking instructions, often handwritten and handed down through a family.","What ingredients were available, how kitchens worked, and which cultures were mixing together."],"ration cards":["Cards limiting how much food, fuel or clothing a person could buy during a shortage.","Wartime hardship, government control, and exactly how scarce particular things had become."],"convict records":["British records of people transported to Australia: crime, sentence, ship, age, trade and description.","Who convicts really were. Most were young and poor, and their crimes were usually small thefts."],"shipping lists":["Records of the passengers and cargo arriving at or leaving a port.","Who migrated, when, from where, with whom, and what goods were moving around the world."],"rock art":["Paintings and hand stencils on rock surfaces, some in Australia tens of thousands of years old.","Animals, ceremonies, tools and arrivals, drawn by people who saw them, long before writing existed."],"engravings":["Designs cut or pecked into rock or metal rather than painted onto it.","Long-lasting images that survive weather, showing what mattered enough to be carved permanently."],"bark paintings":["Artworks painted on sheets of stringybark, a major Aboriginal art form in Arnhem Land.","Stories, law and Country recorded in a form made to teach as much as to be admired."],"portraits":["Pictures of one particular person, usually paid for by that person or their family.","How powerful people wanted to be seen, which is often very different from how they were."],"sketchbooks":["Quick unfinished drawings artists made for themselves, on the spot.","What a place really looked like, before the artist tidied it up for the final painting."],"photographs":["Images captured by a camera, from the 1840s onwards.","Faces, clothes, streets and weather in unforgiving detail. The photographer still chose where to point it."],"postcards":["Printed picture cards sent through the post, usually showing a town's proudest views.","How places advertised themselves, plus a short private message scribbled on the back."],"newsreels":["Short film reports shown in cinemas before television existed.","The movement and sound of events, and the confident official tone audiences were given with them."],"home movies":["Amateur film shot by families of holidays, birthdays and perfectly ordinary days.","Everyday life that no professional film-maker would ever have bothered to record."],"political cartoons":["Drawings that mock or attack politicians and events.","What the public was arguing about, and which figures were instantly recognisable at the time."],"war posters":["Printed images made by governments to recruit soldiers, raise money or change behaviour.","What governments wanted people to feel, and which fears and pride they thought would work."],"advertisements":["Images and words made to sell something.","Prices, new technology, and the hopes and worries advertisers believed their customers had."],"stamps":["Small printed labels proving postage was paid, designed by the state.","What a country chose to put on its own image: heroes, animals, achievements and empires."],"banknotes":["Printed money, designed and issued by a government.","Who a nation honours, what it values, and how much its money was worth at the time."],"tapestries":["Large woven pictures, often telling a whole story across a series of panels.","Events recorded by the winning side, in a form that could hang in a hall for centuries."],"stained glass":["Coloured glass pictures set into windows, mostly in churches.","Stories told to people who could not read, and which wealthy family paid for the window."],"stone tools":["Sharpened or shaped stones used for cutting, scraping, grinding and hunting.","How people got their food, what they traded for materials, and how techniques changed over millennia."],"shell middens":["Ancient heaps of shells, bones and charcoal left where people ate over many years.","Diet, seasons, cooking methods, how long a place was used, and how the coastline has shifted."],"grinding stones":["Heavy stones used to crush seeds, ochre or medicine into powder.","That people in Australia were processing grain far earlier than anyone used to assume."],"ochre":["Natural coloured earth used as paint for art, bodies, ceremony and burials.","Trade routes, because ochre from one quarry turns up hundreds of kilometres away from it."],"hearths":["The remains of a fireplace: burnt stone, ash and charcoal.","Where people camped, what they cooked, and a charcoal sample that can date the whole site."],"post holes":["Dark round stains in the soil where wooden posts once stood and slowly rotted away.","The shape and size of buildings that vanished completely, sometimes centuries ago."],"pottery":["Fired clay containers, which break very easily but almost never decay.","Trade, technology and dates. Styles changed often, so a broken pot can date an entire layer."],"coins":["Metal money, usually stamped with a ruler's face and a date.","Who was in charge, when, and how far trade reached. A coin is a tiny dated document."],"bottles":["Glass containers, whose shape, colour and seams changed rapidly over time.","What people drank and what they treated their illnesses with, and when a rubbish pit was filled."],"buttons":["Small fasteners of bone, shell, metal or plastic that outlast the clothes they held together.","What people wore and what it was made of, and sometimes which regiment or job they belonged to."],"clay pipes":["Cheap white pipes for smoking tobacco, thrown away as soon as they broke.","Dates, because bowl shapes changed decade by decade, and how widespread smoking had become."],"shipwrecks":["Sunken vessels and everything that went down with them.","A sealed moment in time. Cargo, tools and daily objects preserved exactly as they were that day."],"animal bones":["The remains of animals that were eaten, worked, hunted or kept.","Diet, farming, hunting seasons, and which animals lived here before Europeans arrived."],"seeds and pollen":["Tiny plant remains preserved in soil, mud and lake beds.","What was growing, what was farmed, how the climate shifted, and when land was cleared."],"fish traps":["Stone walls and channels built to catch fish as tides or floods moved through.","Engineering, cooperation and settled living. Some Australian traps are thousands of years old."],"rubbish pits":["Holes where households dumped whatever they no longer wanted.","Historians love rubbish. It is the honest record of what a household really used and threw out."],"burials":["Graves, and the objects placed alongside the dead.","Beliefs about death, social rank, health, diet and family. Handled with great care and respect."],"foundations":["The stone or brick base of a building that survives after the walls have fallen.","The size, layout and purpose of buildings that no longer exist above the ground."],"radiocarbon dating":["Measuring the radioactive carbon left in anything that was once alive, to work out its age.","How old a piece of charcoal, bone, wood or seed is, back to about fifty thousand years."],"tree rings":["Counting and measuring the annual growth rings inside timber.","Exact years, plus a record of droughts, fires and good seasons stretching back centuries."],"ice cores":["Long cylinders drilled out of ancient ice sheets, holding trapped air and dust.","Past climate, volcanic eruptions and pollution, layer by layer and year by year."],"ancient DNA":["Genetic material recovered from very old bones, teeth, hair or even soil.","Who was related to whom, how populations moved, and which animals and plants lived there."],"isotope analysis":["Measuring chemical signatures locked into teeth and bone by the food and water someone consumed.","Where a person grew up, what they ate, and whether they moved a long way during their life."],"ground-penetrating radar":["Radar pulsed into the ground to detect what is buried, without digging anything up.","Walls, graves and structures hidden underground, found without disturbing them at all."],"LiDAR scanning":["Laser pulses fired from a plane or drone that map the ground surface with great precision.","Ruins, terraces and old field systems hidden beneath forest, invisible from the air."],"satellite imagery":["Photographs of the Earth taken from space, including older declassified spy images.","Enormous sites, lost rivers and buried features that only show up from very far above."],"drone surveys":["Small aircraft flown low over a site carrying cameras or sensors.","Detailed overhead views of digs and landscapes, cheaply and as often as you like."],"CT scans":["Medical scanners used to see inside objects without opening them.","What is inside a mummy, a sealed box or a corroded lump, without destroying it."],"X-rays":["Radiation used to photograph the inside of solid objects.","Hidden layers underneath paintings, damage inside metal, and details invisible on the surface."],"microscopes":["Instruments that magnify tiny traces far beyond anything the eye can see.","Wear marks showing exactly what a tool cut, plus fibres, seeds and food residues."],"pollen analysis":["Identifying microscopic pollen grains preserved in mud and soil.","Which plants grew nearby, when farming began, and how people reshaped the landscape."],"3D modelling":["Building an accurate digital model of an object, a building or a whole site.","Fragile things can be studied, shared and reconstructed without ever being touched again."],"digital mapping":["Layering historical maps, records and finds on top of one another on a computer.","Patterns nobody could see on paper, such as how a disease or a rumour spread through streets."],"old buildings":["Structures still standing from an earlier time, usually altered many times over.","How people lived, what they could afford, and which fashions and technologies arrived when."],"ruins":["The remains of buildings that were abandoned, destroyed or simply left to fall down.","What happened, how suddenly it happened, and what people left behind when they went."],"scar trees":["Living trees bearing scars where Aboriginal people cut bark for canoes, shields or shelters.","That people used this exact spot, and how they worked with the living landscape rather than clearing it."],"rock shelters":["Overhangs and caves where people camped, sometimes for tens of thousands of years.","Deep layers of occupation, art and tools stacked in order, with the oldest at the bottom."],"cemeteries":["Places set aside for burying the dead, arranged by family, faith or community.","Who lived nearby, how long they lived, which epidemics struck, and which communities were kept apart."],"monuments":["Statues, memorials and plaques put up deliberately to make people remember something.","What one generation wanted remembered, who they chose to honour, and who they left out."],"battlefields":["Ground where fighting took place, still holding bullets, trenches, graves and scars.","How a battle actually unfolded, which often differs sharply from the official account of it."],"bridges":["Crossings built over rivers, valleys and roads.","Where money and effort were spent, which routes mattered, and how engineering changed."],"street names":["The names given to roads by whoever happened to be in charge at the time.","Who was being honoured, what used to be on that spot, and which older name was replaced."],"place names in language":["Names for places in Aboriginal and Torres Strait Islander languages.","Which peoples belong to that Country, what a place was used for, and what once grew or lived there."],"farm boundaries":["Fences, hedges and survey lines dividing land between owners.","How land was taken, divided and sold, and who was pushed off it in the process."],"canals":["Artificial waterways dug for transport, drainage or irrigation.","What goods needed moving before railways existed, and how enormous the labour effort was."],"mines":["Places where minerals were dug out, leaving shafts, tailings and abandoned machinery.","What was worth digging for, who did the digging, and how dangerous the work really was."],"railway lines":["Tracks, stations and embankments, including lines that closed long ago.","Which towns were connected and therefore grew, and which were bypassed and shrank away."],"gardens":["Planted spaces, from grand estates down to backyard vegetable plots.","What people ate, what they thought beautiful, and which plants were carried across the world."],"museum collections":["Objects gathered, catalogued and kept by museums for study and display.","An enormous amount, though a historian must also ask how each object was acquired, and from whom."],"archives":["Organised stores of original documents, kept because someone might need them again.","Almost everything. Archives are where most historical research actually happens."],"libraries":["Collections of books, newspapers, maps and manuscripts, kept so people can read them.","The published thinking of every era, plus rare items that nobody else bothered to keep."],"clothing":["Surviving garments, from ballgowns down to work boots.","Body size, climate, class, work, fashion, and the wear patterns of one real person's life."],"toys":["Objects made for children to play with.","What childhood was like, what adults wanted children to practise, and what families could afford."],"tools":["Implements made to do one specific job.","What work was being done, how skilled it was, and which materials and technology were available."],"weapons":["Objects made for hunting, fighting or display.","Conflict, technology, trade and status. Many were ceremonial and never used in anger at all."],"medals":["Awards given for service, bravery or achievement, usually engraved with a name.","Who did what and when, and what a society decided was worth rewarding publicly."],"furniture":["Chairs, tables, beds and chests that survived from a household.","Wealth, craft skills, room layouts, and how families actually used the space they had."],"musical instruments":["Objects made to produce sound and music.","What music sounded like, what materials were available, and which traditions travelled where."],"trophies":["Objects awarded for winning something.","What people competed at, and which achievements a community wanted displayed on a shelf."],"uniforms":["Standard clothing worn by a group: soldiers, nurses, students, workers.","Rank, role, organisation, and often the exact year, since designs changed frequently."],"jewellery":["Objects worn for decoration, status, memory or belief.","Trade in precious materials, craft skill, and what people wanted to carry with them always."],"household objects":["Ordinary things from kitchens, laundries and living rooms.","Daily routine, technology and chores, which almost nobody at the time thought worth writing down."],"time capsules":["Containers deliberately filled with objects and sealed to be opened much later.","What one generation thought would matter to the next, which is often revealingly wrong."],"documentaries":["Films made about real events, using footage, interviews and expert commentary.","A good starting point. Ask whose voices were included and which evidence was left out."],"podcasts":["Audio programmes, often long and conversational, about historical topics.","Excellent for depth and argument, though quality varies wildly, so check who is speaking."],"museum exhibitions":["Displays of objects arranged deliberately to tell a story.","What the museum thinks the story is. Choosing which objects to show is itself an argument."],"history books":["Books written by historians who have worked through the original sources.","The strongest starting point, especially the footnotes, which show exactly where the evidence came from."],"textbooks":["Books written to teach a syllabus, summarising what is generally agreed.","The accepted version. Compare an old textbook with a new one to watch history change."],"historical fiction":["Novels and stories set in the past, with invented characters and dialogue.","How the past might have felt, and what modern readers assume about it. Check the facts elsewhere."],"films":["Movies dramatising real events, made to entertain at least as much as to inform.","A great hook and a poor source. Films compress, invent and simplify to fit two hours."],"video games":["Interactive worlds built in a historical setting.","How systems worked, sometimes brilliantly, though details are shaped to make the game fun to play."],"re-enactments":["People recreating past events, clothing, cooking or fighting in accurate detail.","Practical knowledge documents cannot give you, such as how long armour takes to put on."],"guided tours":["Someone walking you through a site and explaining what happened there.","Local knowledge and the physical place, plus whatever story the guide has been asked to tell."],"family trees":["Charts tracing who descends from whom, built from birth, marriage and death records.","How your own family connects to big events, and exactly where the paper trail runs out."],"digital archives like Trove":["Huge searchable online collections of digitised newspapers, photographs and records.","Millions of original sources you can read from home, many unread by anyone for a century."],"encyclopaedias":["Reference works summarising what is currently known about a subject.","A quick reliable orientation, then follow the references out to the actual sources."],"YouTube explainers":["Short videos explaining a topic, made by absolutely anyone.","Clear overviews when they are done well, so check the creator's sources before trusting a claim."],"this very web page":["A summary written to introduce seven big questions about history.","A place to start, not to finish. Every claim here can be checked, and checking it is the point."]};
+  var pop=document.getElementById('tagpop'), cur=null, touch=false;
+  window.addEventListener('touchstart',function(){touch=true;},{passive:true,once:true});
+
+  function build(label){
+    var d=D[label]; if(!d) return false;
+    pop.innerHTML='<div class="pt">'+label+'</div>'+
+      '<div class="pw"><span class="pl">What it is</span><p>'+d[0]+'</p></div>'+
+      '<div class="pw"><span class="pl">What a historian learns</span><p>'+d[1]+'</p></div>';
+    return true;
+  }
+  function place(el){
+    var r=el.getBoundingClientRect();
+    pop.style.left='0px'; pop.style.top='0px';
+    var pr=pop.getBoundingClientRect(), pw=pr.width, ph=pr.height, m=12;
+    var left=r.left+r.width/2-pw/2;
+    left=Math.max(m,Math.min(left,window.innerWidth-pw-m));
+    var top=r.top-ph-10;
+    if(top<m+60) top=r.bottom+10;
+    if(top+ph>window.innerHeight-m) top=Math.max(m,window.innerHeight-ph-m);
+    pop.style.left=left+'px'; pop.style.top=top+'px';
+  }
+  function show(el){
+    if(!build(el.textContent.trim())) return;
+    if(cur) cur.classList.remove('open');
+    cur=el; el.classList.add('open');
+    pop.classList.add('show'); pop.setAttribute('aria-hidden','false');
+    place(el);
+  }
+  function hide(){
+    pop.classList.remove('show'); pop.setAttribute('aria-hidden','true');
+    if(cur){cur.classList.remove('open'); cur=null;}
+  }
+  document.querySelectorAll('.taglist span.qt').forEach(function(el){
+    el.addEventListener('mouseenter',function(){ if(!touch) show(el); });
+    el.addEventListener('mouseleave',function(){ if(!touch) hide(); });
+    el.addEventListener('focus',function(){ show(el); });
+    el.addEventListener('blur',function(){ hide(); });
+    el.addEventListener('click',function(e){ e.stopPropagation(); if(cur===el){hide();} else {show(el);} });
+    el.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault(); if(cur===el){hide();}else{show(el);}} });
+  });
+  document.addEventListener('click',function(){ if(touch||cur) hide(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') hide(); });
+  window.addEventListener('scroll',function(){ if(cur) hide(); },{passive:true});
+  window.addEventListener('resize',function(){ if(cur) hide(); });
+})();
+</script>
+
+</body>
+</html>

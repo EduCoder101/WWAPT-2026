@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>History Hunt Worksheet</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#2D3436; --muted:#5A6467; --rule:#B9C2C4;
+  --teal:#2F9E96; --ochre:#C1440E; --amber:#D9A800; --purple:#7A3FC4; --earth:#8C5A2B;
+  --paper:#ffffff; --tint:#F7F2EA;
+}
+@page{size:A4 portrait;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Fredoka',system-ui,sans-serif;color:var(--ink);background:#E9E4DC;
+  font-size:11.4pt;line-height:1.45;-webkit-font-smoothing:antialiased}
+.page{background:var(--paper);width:210mm;min-height:297mm;margin:8mm auto;padding:14mm 13mm 16mm;
+  box-shadow:0 6px 30px rgba(0,0,0,.18);position:relative;display:flex;flex-direction:column}
+.mono{font-family:'Space Mono',monospace}
+
+/* header */
+.wshead{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;
+  border-bottom:3px solid var(--ochre);padding-bottom:.35rem;margin-bottom:.6rem}
+.wshead h1{font-size:20pt;line-height:1.05;font-weight:700;letter-spacing:-.01em}
+.wshead h1 small{display:block;font-size:8.5pt;font-weight:600;letter-spacing:.16em;white-space:nowrap;
+  text-transform:uppercase;color:var(--ochre);font-family:'Space Mono',monospace;margin-bottom:.2rem}
+.namebox{display:flex;gap:.5rem;font-size:9pt;color:var(--muted);white-space:nowrap;align-items:flex-end}
+.namebox span{display:inline-block;border-bottom:1.4px solid var(--rule);min-width:34mm;height:1.25rem}
+.namebox span.sm{min-width:20mm}
+.runner{position:absolute;bottom:7mm;left:13mm;right:13mm;display:flex;justify-content:space-between;
+  font-size:8pt;color:var(--muted);font-family:'Space Mono',monospace;letter-spacing:.06em;
+  border-top:1px solid #E4DED4;padding-top:3px}
+
+/* tasks */
+.task{margin-bottom:4mm;break-inside:avoid}
+.th{display:flex;align-items:baseline;gap:.55rem;margin-bottom:.35rem}
+.tn{font-family:'Space Mono',monospace;font-weight:700;font-size:9pt;color:#fff;background:var(--ochre);
+  border-radius:5px;padding:.1rem .45rem;flex-shrink:0}
+.th h2{font-size:12.5pt;font-weight:700;line-height:1.2}
+.where{font-size:8.5pt;color:var(--teal);font-weight:600;font-family:'Space Mono',monospace;
+  letter-spacing:.05em;margin-left:auto;white-space:nowrap}
+.instr{font-size:10.2pt;color:var(--muted);margin-bottom:.38rem;line-height:1.38}
+.instr b{color:var(--ink);font-weight:600}
+
+/* writing lines */
+.lines{display:block}
+.lines i{display:block;border-bottom:1.3px solid var(--rule);height:7.2mm}
+.lines.tight i{height:6.6mm}
+.halfline{border-bottom:1.3px solid var(--rule);height:7.2mm;display:block}
+
+/* boxes */
+.bank{border:1.6px dashed var(--amber);background:#FDF6DF;border-radius:8px;padding:.5rem .8rem;
+  margin-bottom:.5rem;font-size:10.5pt}
+.bank b{font-family:'Space Mono',monospace;font-size:8pt;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--earth);display:block;margin-bottom:.15rem}
+.bank .w{font-weight:600;display:inline-block;margin-right:1.1rem;color:var(--ochre)}
+.cloze{font-size:11pt;line-height:1.95;background:var(--tint);border-radius:8px;padding:.55rem .8rem;
+  border-left:4px solid var(--teal)}
+.gap{display:inline-block;min-width:26mm;border-bottom:1.4px solid var(--ink);height:1.1em;
+  vertical-align:baseline;margin:0 2px}
+
+/* tables */
+table{width:100%;border-collapse:collapse;font-size:10.2pt}
+th{background:var(--tint);font-weight:600;text-align:left;padding:.32rem .5rem;font-size:9pt;
+  border:1.2px solid var(--rule);font-family:'Space Mono',monospace;letter-spacing:.05em;text-transform:uppercase}
+td{border:1.2px solid var(--rule);padding:.3rem .5rem;vertical-align:top}
+td.blank{height:13mm}
+td.blank2{height:8.5mm}
+td.num{width:9mm;text-align:center;font-family:'Space Mono',monospace;font-weight:700;color:var(--ochre)}
+td.datecell{width:38mm}
+td.ordercell{width:16mm;text-align:center}
+
+/* match columns */
+.match{display:grid;grid-template-columns:1fr 1fr;gap:0 12mm;font-size:9.5pt}
+.match ol{list-style:none;counter-reset:m}
+.match .L li{counter-increment:m;padding:.24rem .5rem;border:1.4px solid var(--teal);border-radius:6px;
+  margin-bottom:.2rem;font-weight:600;display:flex;gap:.45rem;align-items:center}
+.match .L li::before{content:counter(m);font-family:'Space Mono',monospace;color:var(--teal);font-size:8.5pt;
+  border:1.3px solid var(--teal);border-radius:4px;padding:0 .3rem;flex-shrink:0}
+.match .R li{padding:.24rem .5rem;border:1.4px solid var(--purple);border-radius:6px;margin-bottom:.2rem;
+  display:flex;gap:.45rem;align-items:flex-start;line-height:1.3}
+.match .R li b{font-family:'Space Mono',monospace;color:var(--purple);font-size:8.5pt;
+  border:1.3px solid var(--purple);border-radius:4px;padding:0 .3rem;flex-shrink:0}
+.mnote{font-size:9pt;color:var(--muted);grid-column:1/-1;margin-bottom:.35rem}
+
+/* choice list */
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:.3rem .9rem;font-size:10.4pt;margin-bottom:.5rem}
+.choices label{display:flex;gap:.5rem;align-items:center;padding:.24rem .4rem;border:1.3px solid var(--rule);
+  border-radius:7px}
+.choices .box{width:4.5mm;height:4.5mm;border:1.6px solid var(--ochre);border-radius:3px;flex-shrink:0}
+
+/* answer key */
+.key{background:#F2F7F6;border:2px solid var(--teal);border-radius:10px;padding:.6rem .9rem;
+  font-size:9.6pt;margin-bottom:2.6mm;break-inside:avoid}
+.key h3{font-size:10.8pt;color:var(--teal);margin-bottom:.25rem;font-weight:700}
+.key p{margin-bottom:.3rem}
+.key .a{font-weight:600}
+.keybanner{background:var(--teal);color:#fff;border-radius:8px;padding:.5rem .9rem;margin-bottom:4mm;
+  font-family:'Space Mono',monospace;font-size:9pt;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+
+.hint{font-size:9pt;color:var(--muted);font-style:italic;margin-top:.25rem}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:0 8mm}
+
+@media print{
+  body{background:#fff}
+  .page{margin:0;box-shadow:none;width:210mm;height:297mm;min-height:297mm;
+    padding:14mm 13mm 16mm;overflow:hidden;break-after:page;break-inside:avoid}
+  .page:last-child{break-after:auto}
+  .noprint{display:none}
+}
+.noprint{max-width:210mm;margin:8mm auto -4mm;font-size:10pt;color:#5A5048;background:#FFF3D6;
+  border:1.5px dashed #D9A800;border-radius:10px;padding:.8rem 1rem}
+</style>
+</head>
+<body>
+
+<div class="noprint"><strong>Teacher note:</strong> print pages 1 to 4 for students. Page 5 is the answer key, so leave it out of the student copies. Best printed single sided at A4.</div>
+
+<!-- ============ PAGE 1 ============ -->
+<section class="page">
+  <div class="wshead">
+    <h1><small>An inquiry hunt</small>The History Hunt</h1>
+    <div class="namebox">Name <span></span> Class <span class="sm"></span> Date <span class="sm"></span></div>
+  </div>
+
+  <p class="instr" style="margin-bottom:4mm">Open <b>What Is History?</b> and go hunting. Every answer is somewhere on that page. Take your time on the tasks that ask what <em>you</em> think, because no answer is waiting for you there.</p>
+
+  <div class="task">
+    <div class="th"><span class="tn">01</span><h2>Copy out the definition</h2><span class="where">Question One</span></div>
+    <p class="instr">Find the card called <b>A definition to hold on to</b>. Copy the definition of history out in full, in your best handwriting.</p>
+    <div class="lines"><i></i><i></i><i></i></div>
+    <p class="instr" style="margin-top:2mm;margin-bottom:0"><b>historia</b> is the ancient Greek word that history comes from. What does it mean?</p>
+    <span class="halfline"></span>
+  </div>
+
+  <div class="task">
+    <div class="th"><span class="tn">02</span><h2>Fill the gaps</h2><span class="where">Question One</span></div>
+    <p class="instr">This passage comes from the card <b>History is what we can work out</b>. Six words have gone missing. Find the card and put them back.</p>
+    <div class="bank"><b>Word bank</b>
+      <span class="w">failure</span><span class="w">missing</span><span class="w">more</span><span class="w">puzzle</span><span class="w">survived</span><span class="w">test</span>
+    </div>
+    <p class="cloze">Historians gather the pieces that <span class="gap"></span>, <span class="gap"></span> them, and fit them together. Some pieces are <span class="gap"></span> forever. That is not a <span class="gap"></span>. It is the <span class="gap"></span>, and it is why there is always <span class="gap"></span> to find.</p>
+  </div>
+
+  <div class="task">
+    <div class="th"><span class="tn">03</span><h2>Match the eight words that unlock the whole subject</h2><span class="where">Question One</span></div>
+    <div class="match">
+      <p class="mnote">Draw a line from each word on the left to its meaning on the right. One line each.</p>
+      <ol class="L">
+        <li>Source</li><li>Evidence</li><li>Chronology</li><li>Cause and effect</li>
+        <li>Continuity and change</li><li>Perspective</li><li>Significance</li><li>Contestability</li>
+      </ol>
+      <ol class="R">
+        <li><b>A</b>Why an event matters, to whom, and for how long.</li>
+        <li><b>B</b>Anything left behind that tells us something about the past.</li>
+        <li><b>C</b>Historians disagree, on purpose, and argue carefully about the evidence.</li>
+        <li><b>D</b>The order that things happened in.</li>
+        <li><b>E</b>What stayed the same, and what became different.</li>
+        <li><b>F</b>The point of view someone had, shaped by who they were and where they stood.</li>
+        <li><b>G</b>Why something happened, and what happened next because of it.</li>
+        <li><b>H</b>What a source proves once you have asked hard questions of it.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="runner"><span>The History Hunt</span><span>Page 1 of 4</span></div>
+</section>
+
+<!-- ============ PAGE 2 ============ -->
+<section class="page">
+  <div class="task" style="margin-bottom:6mm">
+    <div class="th"><span class="tn">04</span><h2>Go hunting through the evidence</h2><span class="where">Question Two</span></div>
+    <p class="instr">Question Two has eight families of evidence, each packed with labels. <b>Hover your mouse over a label</b> (or tap it) and a card will pop up telling you what it is and what a historian can learn from it. Choose <b>six labels you did not already know</b>, from <b>at least three different families</b>. Do not pick six easy ones.</p>
+    <table>
+      <tr><th class="num">#</th><th style="width:34mm">The label I chose</th><th style="width:38mm">Which family it came from</th><th>What a historian can learn from it</th></tr>
+      <tr><td class="num">1</td><td class="blank"></td><td></td><td></td></tr>
+      <tr><td class="num">2</td><td class="blank"></td><td></td><td></td></tr>
+      <tr><td class="num">3</td><td class="blank"></td><td></td><td></td></tr>
+      <tr><td class="num">4</td><td class="blank"></td><td></td><td></td></tr>
+      <tr><td class="num">5</td><td class="blank"></td><td></td><td></td></tr>
+      <tr><td class="num">6</td><td class="blank"></td><td></td><td></td></tr>
+    </table>
+    <p class="hint">Going deeper: find one label that surprised you, and one you would like to go and look at in real life. Circle them both.</p>
+  </div>
+
+  <div class="task">
+    <div class="th"><span class="tn">05</span><h2>Name the move</h2><span class="where">Question Three</span></div>
+    <p class="instr">Each statement describes a historian at work. Write which of the six steps they are doing: <b>Ask a real question</b>, <b>Go hunting</b>, <b>Read very closely</b>, <b>Interrogate it</b>, <b>Cross-check everything</b>, or <b>Build it, share it, revise it</b>.</p>
+    <table>
+      <tr><th class="num">#</th><th>What the historian is doing</th><th style="width:52mm">Which step is this?</th></tr>
+      <tr><td class="num">1</td><td>She spends a whole morning in the State Library reading 1854 newspapers on microfilm.</td><td class="blank2"></td></tr>
+      <tr><td class="num">2</td><td>He notices that the letter was written thirty years after the event, from memory.</td><td class="blank2"></td></tr>
+      <tr><td class="num">3</td><td>She finds two diaries, written by people who never met, describing the same storm.</td><td class="blank2"></td></tr>
+      <tr><td class="num">4</td><td>He writes at the top of his notebook: "Why do so few women appear in the shipping lists?"</td><td class="blank2"></td></tr>
+      <tr><td class="num">5</td><td>She works out that the old spelling "gaol" in the document means "jail".</td><td class="blank2"></td></tr>
+      <tr><td class="num">6</td><td>He asks who paid for the poster to be printed, and what they wanted people to do.</td><td class="blank2"></td></tr>
+      <tr><td class="num">7</td><td>A new letter turns up. She changes her conclusion and explains why in print.</td><td class="blank2"></td></tr>
+    </table>
+  </div>
+
+  <div class="runner"><span>The History Hunt</span><span>Page 2 of 4</span></div>
+</section>
+
+<!-- ============ PAGE 3 ============ -->
+<section class="page">
+  <div class="task" style="margin-bottom:6mm">
+    <div class="th"><span class="tn">06</span><h2>The five questions that crack any source</h2><span class="where">Question Three</span></div>
+    <p class="instr">Find the card with this title and write the five questions out. Learn them. They work on a 200 year old letter and on something you saw online this morning.</p>
+    <table>
+      <tr><td class="num">1</td><td class="blank2"></td></tr>
+      <tr><td class="num">2</td><td class="blank2"></td></tr>
+      <tr><td class="num">3</td><td class="blank2"></td></tr>
+      <tr><td class="num">4</td><td class="blank2"></td></tr>
+      <tr><td class="num">5</td><td class="blank2"></td></tr>
+    </table>
+  </div>
+
+  <div class="task">
+    <div class="th"><span class="tn">07</span><h2>Put the timeline back together</h2><span class="where">Question Four</span></div>
+    <p class="instr">These ten events have been jumbled up. Write in the <b>date</b> for each one, then number them <b>1 to 10</b> in the order they happened, with 1 being the earliest.</p>
+    <table>
+      <tr><th>Event</th><th class="datecell">Date</th><th class="ordercell">Order</th></tr>
+      <tr><td>Gold is found, and everything speeds up</td><td class="blank2"></td><td></td></tr>
+      <tr><td>The Mabo decision</td><td class="blank2"></td><td></td></tr>
+      <tr><td>The First Peoples, and the oldest continuing cultures on Earth</td><td class="blank2"></td><td></td></tr>
+      <tr><td>Federation: six colonies become one nation</td><td class="blank2"></td><td></td></tr>
+      <tr><td>James Cook charts the east coast</td><td class="blank2"></td><td></td></tr>
+      <tr><td>The Referendum</td><td class="blank2"></td><td></td></tr>
+      <tr><td>The First Fleet arrives at Sydney Cove</td><td class="blank2"></td><td></td></tr>
+      <tr><td>Gallipoli and the First World War</td><td class="blank2"></td><td></td></tr>
+      <tr><td>The Eureka Stockade at Ballarat</td><td class="blank2"></td><td></td></tr>
+      <tr><td>Visitors from the north, and the first recorded European landfall</td><td class="blank2"></td><td></td></tr>
+    </table>
+    <p class="hint">Going deeper: pick the one event you think changed the most for the most people, and put a star beside it. Be ready to defend your choice.</p>
+  </div>
+
+  <div class="runner"><span>The History Hunt</span><span>Page 3 of 4</span></div>
+</section>
+
+<!-- ============ PAGE 4 ============ -->
+<section class="page">
+  <div class="task">
+    <div class="th"><span class="tn">08</span><h2>Your favourite quote</h2><span class="where">Anywhere on the page</span></div>
+    <p class="instr">There are eleven quotes scattered through the page. Find the one you like best, copy it out exactly, and say who said it.</p>
+    <div class="lines tight"><i></i><i></i></div>
+    <p class="instr" style="margin-top:2mm">Said by <span class="halfline" style="display:inline-block;width:70mm;height:1.2rem"></span></p>
+    <p class="instr" style="margin-top:2mm">Why did you choose that one?</p>
+    <div class="lines tight"><i></i><i></i></div>
+  </div>
+
+  <div class="task">
+    <div class="th"><span class="tn">09</span><h2>Why do people see history differently?</h2><span class="where">Question Six</span></div>
+    <p class="instr">Write four or five sentences explaining why people can have completely different perspectives about the very same event. Use the words <b>perspective</b> and <b>evidence</b>, and use one real example from the page.</p>
+    <p class="instr" style="font-style:italic;color:#8C5A2B">You could start: "People can look at the same event and see two different things, because&hellip;"</p>
+    <div class="lines"><i></i><i></i><i></i><i></i><i></i></div>
+  </div>
+
+  <div class="task">
+    <div class="th"><span class="tn">10</span><h2>Your judgment: should we learn about history?</h2><span class="where">Question Seven</span></div>
+    <p class="instr">Question Seven gives eight reasons. Tick the <b>one</b> that stands out most to you.</p>
+    <div class="choices">
+      <label><span class="box"></span>The greatest story ever told</label>
+      <label><span class="box"></span>A shield against being fooled</label>
+      <label><span class="box"></span>It explains why things are the way they are</label>
+      <label><span class="box"></span>You get to live a thousand lives</label>
+      <label><span class="box"></span>It tells you where you come from</label>
+      <label><span class="box"></span>It proves that things can change</label>
+      <label><span class="box"></span>It is full of unsolved mysteries</label>
+      <label><span class="box"></span>It makes you formidable</label>
+    </div>
+    <p class="instr">Now justify it. Why that one, and not the other seven? Three or four sentences.</p>
+    <div class="lines"><i></i><i></i><i></i><i></i></div>
+  </div>
+
+  <div class="runner"><span>The History Hunt</span><span>Page 4 of 4</span></div>
+</section>
+
+<!-- ============ ANSWER KEY ============ -->
+<section class="page">
+  <div class="wshead">
+    <h1><small>Teacher copy &middot; do not print for students</small>Answer Key</h1>
+  </div>
+  <div class="keybanner">Tasks 1, 4, 8, 9 and 10 are open responses. Marking notes are given for those.</div>
+
+  <div class="key">
+    <h3>01 &nbsp;Copy out the definition</h3>
+    <p><span class="a">Definition:</span> "History (noun): the study of past events, especially in human affairs; and the written or spoken record we build from the evidence those events left behind."</p>
+    <p><span class="a">historia</span> means "inquiry", or "finding things out by asking".</p>
+  </div>
+
+  <div class="key">
+    <h3>02 &nbsp;Fill the gaps</h3>
+    <p>survived &middot; test &middot; missing &middot; failure &middot; puzzle &middot; more</p>
+  </div>
+
+  <div class="key">
+    <h3>03 &nbsp;Match the eight words</h3>
+    <p>1 Source = <span class="a">B</span> &nbsp;&middot;&nbsp; 2 Evidence = <span class="a">H</span> &nbsp;&middot;&nbsp; 3 Chronology = <span class="a">D</span> &nbsp;&middot;&nbsp; 4 Cause and effect = <span class="a">G</span></p>
+    <p>5 Continuity and change = <span class="a">E</span> &nbsp;&middot;&nbsp; 6 Perspective = <span class="a">F</span> &nbsp;&middot;&nbsp; 7 Significance = <span class="a">A</span> &nbsp;&middot;&nbsp; 8 Contestability = <span class="a">C</span></p>
+  </div>
+
+  <div class="key">
+    <h3>04 &nbsp;Go hunting through the evidence</h3>
+    <p>Open response. Look for six genuinely different labels drawn from at least three families, and for the "what a historian can learn" column being written in the student's own words rather than copied straight from the pop-up. The strongest answers explain <em>how</em> the source would be used, not just what it is.</p>
+  </div>
+
+  <div class="key">
+    <h3>05 &nbsp;Name the move</h3>
+    <p>1 <span class="a">Go hunting</span> &nbsp;&middot;&nbsp; 2 <span class="a">Interrogate it</span> &nbsp;&middot;&nbsp; 3 <span class="a">Cross-check everything</span> &nbsp;&middot;&nbsp; 4 <span class="a">Ask a real question</span></p>
+    <p>5 <span class="a">Read very closely</span> &nbsp;&middot;&nbsp; 6 <span class="a">Interrogate it</span> &nbsp;&middot;&nbsp; 7 <span class="a">Build it, share it, revise it</span></p>
+  </div>
+
+  <div class="runner"><span>The History Hunt &middot; Answer Key</span><span>Teacher copy, 1 of 2</span></div>
+</section>
+
+<section class="page">
+  <div class="wshead">
+    <h1><small>Teacher copy &middot; do not print for students</small>Answer Key, continued</h1>
+  </div>
+
+  <div class="key">
+    <h3>06 &nbsp;The five questions that crack any source</h3>
+    <p>1 Who made this? &nbsp;&middot;&nbsp; 2 When was it made? &nbsp;&middot;&nbsp; 3 Why was it made? &nbsp;&middot;&nbsp; 4 Who was it for? &nbsp;&middot;&nbsp; 5 Who is missing?</p>
+  </div>
+
+  <div class="key">
+    <h3>07 &nbsp;Put the timeline back together</h3>
+    <p>Gold found, 1851, order <span class="a">5</span> &nbsp;&middot;&nbsp; Mabo decision, 3 June 1992, order <span class="a">10</span></p>
+    <p>First Peoples, 65,000+ years ago, order <span class="a">1</span> &nbsp;&middot;&nbsp; Federation, 1 January 1901, order <span class="a">7</span></p>
+    <p>Cook charts the east coast, 1770, order <span class="a">3</span> &nbsp;&middot;&nbsp; The Referendum, 27 May 1967, order <span class="a">9</span></p>
+    <p>First Fleet, 26 January 1788, order <span class="a">4</span> &nbsp;&middot;&nbsp; Gallipoli, 25 April 1915, order <span class="a">8</span></p>
+    <p>Eureka Stockade, 3 December 1854, order <span class="a">6</span> &nbsp;&middot;&nbsp; Visitors from the north, 1606 and before, order <span class="a">2</span></p>
+  </div>
+
+  <div class="key">
+    <h3>08, 09 and 10 &nbsp;Open responses</h3>
+    <p><span class="a">08</span> Accept any of the eleven quotes, copied accurately and correctly attributed. The reasoning matters more than the choice.</p>
+    <p><span class="a">09</span> Look for: different people saw different parts of the event; they had different interests and beliefs; they wanted different things to be true. The strongest answers add the page's rule, that different perspectives do not make every claim equally true, and cite a real example such as 26 January.</p>
+    <p><span class="a">10</span> Any of the eight is correct. Mark the justification: does the student give a reason, and does it rule out the others rather than just praising the one they picked?</p>
+  </div>
+
+  <div class="runner"><span>The History Hunt &middot; Answer Key</span><span>Teacher copy, 2 of 2</span></div>
+</section>
+
+</body>
+</html>
