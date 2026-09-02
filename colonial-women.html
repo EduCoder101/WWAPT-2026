@@ -236,12 +236,13 @@ figure.src figcaption .cite{color:var(--brass-dim)}
     <a href="#" data-st="0"><span class="n">00</span><span class="t">Start here</span></a>
     <a href="#" data-st="1"><span class="n">01</span><span class="t">How we got here</span></a>
     <a href="#" data-st="2"><span class="n">02</span><span class="t">Meet the three</span></a>
-    <a href="#" data-st="3"><span class="n">03</span><span class="t">Sort the evidence</span></a>
-    <a href="#" data-st="4"><span class="n">04</span><span class="t">The three lives</span></a>
+    <a href="#" data-st="3"><span class="n">03</span><span class="t">Research the sources</span></a>
+    <a href="#" data-st="4"><span class="n">04</span><span class="t">Sort the evidence</span></a>
     <a href="#" data-st="5"><span class="n">05</span><span class="t">Careful, historians</span></a>
     <a href="#" data-st="6"><span class="n">06</span><span class="t">Whose Country was this</span></a>
     <a href="#" data-st="7"><span class="n">07</span><span class="t">Build your grid</span></a>
-    <a href="#" data-st="8"><span class="n">08</span><span class="t">Show what you know</span></a>
+    <a href="#" data-st="8"><span class="n">08</span><span class="t">Compare your notes</span></a>
+    <a href="#" data-st="9"><span class="n">09</span><span class="t">Show what you know</span></a>
   </nav>
   <div id="railfoot">Notes go in your book, not on the screen. Nothing you click here is saved.</div>
 </aside>
@@ -372,32 +373,38 @@ figure.src figcaption .cite{color:var(--brass-dim)}
   </div>
 </section>
 
-<!-- ============ P6 sorter ============ -->
-<section class="pg" data-st="3" data-t="Sort the evidence">
+<!-- ============ Research first ============ -->
+<section class="pg mid" data-st="3" data-t="Research first">
   <div class="pghead">
-    <div><span class="lbl num">Station 03</span><h2>Sort the evidence</h2></div>
-    <div class="lede">Thirty facts. Three women. <strong>Tap a fact, then tap the woman it belongs to.</strong> You are building the picture of all three before you choose one to investigate, so read every card even when you are sure.</div>
+    <div><span class="lbl num">Station 03</span><h2>Research first</h2></div>
+    <div class="lede">The next six pages are your sources. <strong>Nobody is going to tell you the answers.</strong> Read, look closely, and write notes in your book before you move on. Everything after this depends on those notes.</div>
   </div>
   <div class="pgbody">
-    <div class="task">
-      <span class="lbl">The facts</span>
-      <div class="sortbank" id="sortBank"></div>
-      <div class="bar"><i id="sortBar"></i></div>
-      <div style="margin-top:11px;display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap">
-        <span class="tip" id="sortMsg">Tap a fact to pick it up. You can also drag it.</span>
-        <span class="mono" style="color:var(--brass);font-weight:700"><span id="sortDone">0</span> / 30</span>
+    <div class="grid2 wl" style="align-items:start;gap:30px">
+      <div class="task">
+        <span class="lbl">Write a 3-2-1 for each woman</span>
+        <div class="grid3" style="gap:14px;margin-top:6px">
+          <div class="fact" style="text-align:center"><span class="big mono" style="font-size:52px">3</span><br><b>things you learned</b><br>about her, in full sentences.</div>
+          <div class="fact" style="text-align:center"><span class="big mono" style="font-size:52px">2</span><br><b>questions</b><br>you still have about her life.</div>
+          <div class="fact" style="text-align:center"><span class="big mono" style="font-size:52px">1</span><br><b>word</b><br>that sums her up, and why you chose it.</div>
+        </div>
+        <p style="color:var(--ink2);margin-top:16px;font-size:15.5px">Do this for <b style="color:var(--ink)">all three women</b>, one after the other. Give each one a heading in your book. Aim for half a page each.</p>
       </div>
-    </div>
-    <div class="trays" id="trays">
-      <div class="tray" data-w="mr"><h3>Mary Reibey</h3><div class="who">Convict, then trader and shipowner</div><div class="slot"></div></div>
-      <div class="tray" data-w="cc"><h3>Caroline Chisholm</h3><div class="who">Campaigner for immigrants and families</div><div class="slot"></div></div>
-      <div class="tray" data-w="em"><h3>Elizabeth Macarthur</h3><div class="who">Free settler, farmer and wool breeder</div><div class="slot"></div></div>
+      <div style="display:grid;gap:16px">
+        <div class="pane">
+          <h3>Where to look</h3>
+          <p><b style="color:var(--ink)">Here.</b> Each woman has two pages: her life, and how she is remembered. Every picture enlarges when you click it. Read the captions, they are not decoration.</p>
+          <p><b style="color:var(--ink)">The videos</b> you watched as a class. Go back to them if you need to.</p>
+          <p><b style="color:var(--ink)">Canvas.</b> Your teacher has put more resources there, including more pictures of each woman.</p>
+        </div>
+        <div class="warn"><b style="color:var(--brass)">A test for a good note.</b> If you could have written it before you looked at the source, it is not a note, it is a guess. Every one of your three facts should point to something you actually read or saw.</div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ============ Mary Reibey, life ============ -->
-<section class="pg" data-st="4" data-t="Mary Reibey: her life">
+<section class="pg" data-st="3" data-t="Mary Reibey: her life">
   <div class="pghead">
     <div><span class="lbl num" style="color:var(--mr)">One of three</span><h2 style="color:var(--mr)">Mary Reibey</h2></div>
     <div class="lede">Born Molly Haydock in Lancashire in 1777. Orphaned young. Caught stealing a horse while dressed as a boy. <strong>Sent 17,000 kilometres away at fifteen.</strong></div>
@@ -425,7 +432,7 @@ figure.src figcaption .cite{color:var(--brass-dim)}
 </section>
 
 <!-- ============ Mary Reibey, remembered ============ -->
-<section class="pg" data-st="4" data-t="Mary Reibey: remembered">
+<section class="pg" data-st="3" data-t="Mary Reibey: remembered">
   <div class="pghead sm">
     <div><span class="lbl num" style="color:var(--mr)">One of three</span><h2 style="color:var(--mr)">How Mary Reibey is remembered</h2></div>
     <div class="lede">She died in 1855 as one of the wealthiest people in the colony. Nearly two centuries later most Australians carry her face in their pocket without knowing whose it is.</div>
@@ -447,11 +454,12 @@ figure.src figcaption .cite{color:var(--brass-dim)}
         <div class="fact"><b>What she left.</b> Her face on the $20 note. Reiby Place in Sydney. Figtree House at Hunters Hill, on land she owned, still standing. A governorship of the Sydney Free Grammar School in 1825. And an idea the colony found hard to swallow: that a transported convict girl could end up richer than the people who sentenced her.</div>
       </div>
     </div>
+    <div class="note" style="margin-top:22px;border-color:var(--mr)"><b style="color:var(--mr)">Stop here and write.</b> Your 3-2-1 for Mary Reibey goes in your book now, before you turn the page. Three things you learned, two questions, one word.</div>
   </div>
 </section>
 
 <!-- ============ Caroline Chisholm, life ============ -->
-<section class="pg" data-st="4" data-t="Caroline Chisholm: her life">
+<section class="pg" data-st="3" data-t="Caroline Chisholm: her life">
   <div class="pghead">
     <div><span class="lbl num" style="color:var(--cc)">Two of three</span><h2 style="color:var(--cc)">Caroline Chisholm</h2></div>
     <div class="lede">She was not sent here and she did not come for land. She came with her soldier husband, saw women sleeping in the streets after months at sea, and decided it was her job to fix it.</div>
@@ -476,7 +484,7 @@ figure.src figcaption .cite{color:var(--brass-dim)}
 </section>
 
 <!-- ============ Caroline Chisholm, remembered ============ -->
-<section class="pg" data-st="4" data-t="Caroline Chisholm: remembered">
+<section class="pg" data-st="3" data-t="Caroline Chisholm: remembered">
   <div class="pghead sm">
     <div><span class="lbl num" style="color:var(--cc)">Two of three</span><h2 style="color:var(--cc)">How Caroline Chisholm is remembered</h2></div>
     <div class="lede">She helped more than eleven thousand people, then died poor in London lodgings in 1877, largely forgotten. It took Australia about sixty years to build her a proper memorial.</div>
@@ -508,11 +516,12 @@ figure.src figcaption .cite{color:var(--brass-dim)}
         <p class="tip">Who decides which names go on money, streets and schools?</p>
       </div>
     </div>
+    <div class="note" style="margin-top:22px;border-color:var(--cc)"><b style="color:var(--cc)">Stop here and write.</b> Your 3-2-1 for Caroline Chisholm goes in your book now, before you turn the page. Three things you learned, two questions, one word.</div>
   </div>
 </section>
 
 <!-- ============ Elizabeth Macarthur, life ============ -->
-<section class="pg" data-st="4" data-t="Elizabeth Macarthur: her life">
+<section class="pg" data-st="3" data-t="Elizabeth Macarthur: her life">
   <div class="pghead">
     <div><span class="lbl num" style="color:var(--em)">Three of three</span><h2 style="color:var(--em)">Elizabeth Macarthur</h2></div>
     <div class="lede">A Devon farmer&rsquo;s daughter who arrived free, not in chains, and then ran a sheep empire for eight and a half years while her husband was banished to the other side of the world.</div>
@@ -536,7 +545,7 @@ figure.src figcaption .cite{color:var(--brass-dim)}
 </section>
 
 <!-- ============ Elizabeth Macarthur, remembered ============ -->
-<section class="pg" data-st="4" data-t="Elizabeth Macarthur: remembered">
+<section class="pg" data-st="3" data-t="Elizabeth Macarthur: remembered">
   <div class="pghead sm">
     <div><span class="lbl num" style="color:var(--em)">Three of three</span><h2 style="color:var(--em)">How Elizabeth Macarthur is remembered</h2></div>
     <div class="lede">Her house is still standing and you can walk through it. Her husband went on the $2 note. <strong>She has never appeared on Australian money.</strong></div>
@@ -568,8 +577,42 @@ figure.src figcaption .cite{color:var(--brass-dim)}
         <p class="tip">Write your answer in your book. There is more than one good reason.</p>
       </div>
     </div>
+    <div class="note" style="margin-top:22px;border-color:var(--em)"><b style="color:var(--em)">Stop here and write.</b> Your 3-2-1 for Elizabeth Macarthur goes in your book now, before you turn the page. Three things you learned, two questions, one word.</div>
   </div>
 </section>
+<!-- ============ P6 sorter ============ -->
+<section class="pg" data-st="4" data-t="Sort the evidence">
+  <div class="pghead">
+    <div><span class="lbl num">Station 04</span><h2>Sort the evidence</h2></div>
+    <div class="lede">Thirty facts. Three women. <strong>Use your 3-2-1 notes, not your memory of the videos.</strong> Tap a fact, then tap the woman it belongs to. If you are not sure, that is a sign to go back to her source pages, not to guess.</div>
+  </div>
+  <div class="pgbody">
+    <div class="task" id="sortGate" style="margin-bottom:18px;background:rgba(143,168,189,.07);border-color:rgba(143,168,189,.35)">
+      <span class="lbl" style="color:var(--slate)">Before you sort</span>
+      <div class="q" style="font-size:17.5px;margin-bottom:8px">Tick each woman once her 3-2-1 is written in your book. The facts unlock when all three are done.</div>
+      <div style="display:flex;gap:10px 28px;flex-wrap:wrap" id="gateChecks">
+        <button class="gopt" data-g="mr" style="width:auto;border:none;padding:4px 0"><span class="bx"></span><span>Mary Reibey</span></button>
+        <button class="gopt" data-g="cc" style="width:auto;border:none;padding:4px 0"><span class="bx"></span><span>Caroline Chisholm</span></button>
+        <button class="gopt" data-g="em" style="width:auto;border:none;padding:4px 0"><span class="bx"></span><span>Elizabeth Macarthur</span></button>
+      </div>
+    </div>
+    <div class="task" id="sortTask">
+      <span class="lbl">The facts</span>
+      <div class="sortbank" id="sortBank"></div>
+      <div class="bar"><i id="sortBar"></i></div>
+      <div style="margin-top:11px;display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap">
+        <span class="tip" id="sortMsg">Tap a fact to pick it up. You can also drag it.</span>
+        <span class="mono" style="color:var(--brass);font-weight:700"><span id="sortDone">0</span> / 30</span>
+      </div>
+    </div>
+    <div class="trays" id="trays">
+      <div class="tray" data-w="mr"><h3>Mary Reibey</h3><div class="who">Convict, then trader and shipowner</div><div class="slot"></div></div>
+      <div class="tray" data-w="cc"><h3>Caroline Chisholm</h3><div class="who">Campaigner for immigrants and families</div><div class="slot"></div></div>
+      <div class="tray" data-w="em"><h3>Elizabeth Macarthur</h3><div class="who">Free settler, farmer and wool breeder</div><div class="slot"></div></div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ P10 myths ============ -->
 <section class="pg" data-st="5" data-t="Careful, historians">
   <div class="pghead">
@@ -623,11 +666,11 @@ figure.src figcaption .cite{color:var(--brass-dim)}
   </div>
 </section>
 
-<!-- ============ P12 choose + grid ============ -->
+<!-- ============ choose + grid ============ -->
 <section class="pg" data-st="7" data-t="Choose your woman">
   <div class="pghead">
     <div><span class="lbl num">Station 07</span><h2>Choose your woman</h2></div>
-    <div class="lede">Pick one to investigate. Her facts will appear underneath, sorted into the three columns of your gathering grid. <strong>Tick the ones you are going to use, then copy them into your book in your own words.</strong></div>
+    <div class="lede">Pick one to investigate properly. Then, <strong>using your 3-2-1 notes and her two source pages</strong>, write your gathering grid in your book under the three headings below. The screen gives you the headings and sentence starters. The facts come from your research.</div>
   </div>
   <div class="pgbody">
     <div class="picks" id="picks">
@@ -639,7 +682,7 @@ figure.src figcaption .cite{color:var(--brass-dim)}
     <div id="gridWrap" style="display:none;margin-top:28px">
       <div style="display:flex;justify-content:space-between;align-items:baseline;gap:18px;flex-wrap:wrap;margin-bottom:4px">
         <span class="lbl" id="gridWho">Your gathering grid</span>
-        <span class="mono" style="color:var(--brass);font-weight:700"><span id="gridCount">0</span> facts ticked</span>
+        <span class="tip">Rule a table with these three columns in your book.</span>
       </div>
       <div class="gridcols" id="gridCols"></div>
 
@@ -653,17 +696,45 @@ figure.src figcaption .cite{color:var(--brass-dim)}
 
       <div class="task" style="margin-top:26px">
         <span class="lbl">Now write</span>
-        <div class="q">Copy your three columns into your book, in <b>your own words and in full sentences</b>. Then, underneath, write an informative paragraph about her: who she was, what she did, and what difference she made in her own time.</div>
-        <p class="tip">Aim for six sentences. Start with who she was, finish with why we still know her name.</p>
+        <div class="q">Fill all three columns in <b>your own words and in full sentences</b>. Then, underneath, write an informative paragraph about her: who she was, what she did, and what difference she made in her own time.</div>
+        <p class="tip">Aim for six sentences. Start with who she was, finish with why we still know her name. When you are done, turn the page to check your notes against the record.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ P13 quiz + exit ============ -->
-<section class="pg mid" data-st="8" data-t="Show what you know">
+<!-- ============ compare your notes ============ -->
+<section class="pg" data-st="8" data-t="Compare your notes" data-build="compare">
   <div class="pghead">
-    <div><span class="lbl num">Station 08</span><h2>Show what you know</h2></div>
+    <div><span class="lbl num">Station 08</span><h2>Compare your notes</h2></div>
+    <div class="lede">Now that your grid is written, here is what the record says about her. <strong>Tick everything you already had.</strong> Anything you missed, add to your book now, in your own words. Nothing you got wrong is a failure. That is what checking is for.</div>
+  </div>
+  <div class="pgbody">
+    <div id="cmpNone" class="warn" style="max-width:640px">
+      <b style="color:var(--brass)">You have not chosen a woman yet.</b> Go back one page, choose her, and write your grid first. This page only makes sense afterwards.
+    </div>
+    <div id="cmpWrap" style="display:none">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:18px;flex-wrap:wrap;margin-bottom:4px">
+        <span class="lbl" id="cmpWho">The record</span>
+        <span class="mono" style="color:var(--brass);font-weight:700"><span id="cmpCount">0</span> of <span id="cmpTotal">0</span> already in your notes</span>
+      </div>
+      <div class="gridcols" id="cmpCols"></div>
+      <div style="margin-top:22px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:18px;flex-wrap:wrap">
+          <span class="lbl">Going further</span>
+          <button class="btn" id="cmpExtBtn" style="padding:8px 16px;font-size:14px">Show the extension facts</button>
+        </div>
+        <div class="gridcols" id="cmpExt" style="display:none"></div>
+      </div>
+      <div class="note" style="margin-top:22px" id="cmpVerdict"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ P13 quiz + exit ============ -->
+<section class="pg mid" data-st="9" data-t="Show what you know">
+  <div class="pghead">
+    <div><span class="lbl num">Station 09</span><h2>Show what you know</h2></div>
     <div class="lede">Twenty questions. The pass mark is <strong>15 out of 20</strong>. Use everything you have gathered. If you are stuck on one, go back through the stations rather than guessing.</div>
   </div>
   <div class="pgbody">
@@ -841,7 +912,16 @@ var GRID={
  }
 };
 
-var CHECK=["Notes on your chosen woman under all three headings",
+var STARTERS={
+ who:["She was born in ... in ...","She came to Australia in ... because ...","When she arrived she was ..."],
+ why:["She is a significant Australian because ...","She changed ... for ...","Without her, ..."],
+ fun:["One surprising thing about her is ...","Something I did not expect was ...","A detail I will remember is ..."],
+ leg:["Today she is remembered by ...","Something named after her is ...","She is, or is not, on our money because ..."],
+ chal:["One thing that made her life hard was ...","She had to overcome ...","Something that happened to her that was not fair ..."],
+ own:["What did she think about ...?","Who disagreed with her, and why?","What happened to the people who were already there?"]
+};
+var CHECK=["A 3-2-1 for each of the three women",
+ "Your gathering grid for your chosen woman, under all three headings",
  "At least one thing she found hard",
  "At least one way she is remembered today",
  "Your two sentences about achievement and cost, and your answer about whether one cancels the other",
@@ -917,6 +997,22 @@ $$('[data-reveal]').forEach(function(b){
 
 /* ---------- the sorter ---------- */
 var SORTED={mr:[],cc:[],em:[]};
+var GATE={mr:false,cc:false,em:false}, GATE_OPEN=false;
+(function(){
+  var task=$('#sortTask'), trays=$('#trays');
+  function setLock(){
+    GATE_OPEN=GATE.mr&&GATE.cc&&GATE.em;
+    task.style.opacity=GATE_OPEN?'1':'.38'; task.style.pointerEvents=GATE_OPEN?'auto':'none';
+    trays.style.opacity=GATE_OPEN?'1':'.38'; trays.style.pointerEvents=GATE_OPEN?'auto':'none';
+    $('#sortMsg').textContent=GATE_OPEN?'Unlocked. Tap a fact to pick it up, or drag it.':'Locked until all three 3-2-1s are ticked above.';
+  }
+  $$('#gateChecks .gopt').forEach(function(b){
+    b.addEventListener('click',function(){
+      b.classList.toggle('on'); GATE[b.dataset.g]=b.classList.contains('on'); setLock();
+    });
+  });
+  setLock();
+})();
 (function(){
   var bank=$('#sortBank'), msg=$('#sortMsg'), cnt=$('#sortDone'), bar=$('#sortBar'), sel=-1, done=0;
   shuffle(SORT.map(function(c,i){return i})).forEach(function(i){
@@ -967,42 +1063,28 @@ var SORTED={mr:[],cc:[],em:[]};
   });
 })();
 
-/* ---------- choose + gathering grid ---------- */
+/* ---------- choose + gathering grid (headings and starters only) ---------- */
+var PICKED=null;
+var COLS=[["who","Who is she?"],["why","Why is she a significant Australian?"],["fun","What are some interesting facts about her?"]];
+var EXT=[["leg","What is her legacy?"],["chal","What challenges did she face?"],["own","One question you still have"]];
 (function(){
-  var wrap=$('#gridWrap'), cols=$('#gridCols'), ext=$('#extCols'), who=$('#gridWho'), cntEl=$('#gridCount');
-  var COLS=[["who","Who is she?"],["why","Why is she a significant Australian?"],["fun","What are some interesting facts about her?"]];
-  var EXT=[["leg","What is her legacy?"],["chal","What challenges did she face?"],["own","One question you still have"]];
-  var picked=null, chosen={};
-  function build(target,defs,w){
+  var wrap=$('#gridWrap'), cols=$('#gridCols'), ext=$('#extCols'), who=$('#gridWho');
+  function build(target,defs){
     target.innerHTML='';
     defs.forEach(function(d){
       var c=document.createElement('div'); c.className='gcol';
-      var items=(d[0]==='own')?null:GRID[w][d[0]];
-      var body='';
-      if(items){
-        items.forEach(function(t,i){
-          body+='<button class="gopt" data-k="'+w+'-'+d[0]+'-'+i+'"><span class="bx"></span><span>'+t+'</span></button>';
-        });
-      }else{
-        body='<p style="color:var(--ink3);font-size:14.5px;line-height:1.5;padding:6px 0">This column is yours. Write a question you still want answered. For example: what did she think about it? who disagreed with her? what happened to the people she left behind?</p>';
-      }
+      var body=STARTERS[d[0]].map(function(t){return '<p style="color:var(--ink2);font-size:14.5px;line-height:1.5;padding:7px 0;border-bottom:1px solid rgba(239,230,213,.05)"><span style="color:var(--brass)">&#8250;</span> '+t+'</p>'}).join('');
+      body+='<p class="tip" style="padding-top:9px">Sentence starters only. The facts come from your notes.</p>';
       c.innerHTML='<div class="gh">'+d[1]+'</div><div class="gb">'+body+'</div>';
       target.appendChild(c);
-    });
-    $$('.gopt',target).forEach(function(o){
-      o.addEventListener('click',function(){
-        o.classList.toggle('on');
-        chosen[o.dataset.k]=o.classList.contains('on');
-        cntEl.textContent=Object.keys(chosen).filter(function(k){return chosen[k]}).length;
-      });
     });
   }
   $$('.pick').forEach(function(p){
     p.addEventListener('click',function(){
-      picked=p.dataset.w; chosen={}; cntEl.textContent=0;
+      PICKED=p.dataset.w;
       $$('.pick').forEach(function(x){x.classList.toggle('on',x===p)});
-      who.textContent='Your gathering grid: '+W[picked];
-      build(cols,COLS,picked); build(ext,EXT,picked);
+      who.textContent='Your gathering grid: '+W[PICKED];
+      build(cols,COLS); build(ext,EXT);
       wrap.style.display='block';
       ext.style.display='none'; $('#extBtn').textContent='Show the extension grid';
       wrap.scrollIntoView({block:'start'});
@@ -1012,6 +1094,56 @@ var SORTED={mr:[],cc:[],em:[]};
     var open=ext.style.display!=='none';
     ext.style.display=open?'none':'grid';
     this.textContent=open?'Show the extension grid':'Hide the extension grid';
+  });
+})();
+
+/* ---------- compare your notes (the record, revealed after writing) ---------- */
+var buildCompare;
+(function(){
+  var none=$('#cmpNone'), wrap=$('#cmpWrap'), cols=$('#cmpCols'), ext=$('#cmpExt'), who=$('#cmpWho');
+  var cnt=$('#cmpCount'), tot=$('#cmpTotal'), verdict=$('#cmpVerdict'), built=null, found={};
+  function col(target,defs,w){
+    target.innerHTML='';
+    defs.forEach(function(d){
+      if(d[0]==='own')return;
+      var c=document.createElement('div'); c.className='gcol';
+      var body=GRID[w][d[0]].map(function(t,i){
+        return '<button class="gopt" data-k="'+d[0]+'-'+i+'"><span class="bx"></span><span>'+t+'</span></button>';
+      }).join('');
+      c.innerHTML='<div class="gh">'+d[1]+'</div><div class="gb">'+body+'</div>';
+      target.appendChild(c);
+    });
+    $$('.gopt',target).forEach(function(o){
+      o.addEventListener('click',function(){
+        o.classList.toggle('on'); found[o.dataset.k]=o.classList.contains('on'); tally();
+      });
+    });
+  }
+  function tally(){
+    var n=Object.keys(found).filter(function(k){return found[k]}).length;
+    var total=COLS.reduce(function(a,d){return a+GRID[PICKED][d[0]].length},0);
+    cnt.textContent=n; tot.textContent=total;
+    var msg;
+    if(n===0) msg='Tick each fact you already wrote down. Be honest with yourself, nobody else is counting.';
+    else if(n>=total-2) msg='<b style="color:var(--jade)">Your research was thorough.</b> You found nearly everything the record has. Add the last few in your own words and move on.';
+    else if(n>=Math.ceil(total/2)) msg='<b style="color:var(--brass)">A solid grid.</b> You found more than half. Read the ones you missed and ask yourself which source page they came from, then add them.';
+    else msg='<b style="color:var(--clay)">Go back to her source pages.</b> Most of the record is not in your notes yet. Read both pages again slowly, then add at least four of these in your own words.';
+    verdict.innerHTML=msg;
+  }
+  buildCompare=function(){
+    if(!PICKED){ none.style.display='block'; wrap.style.display='none'; return; }
+    none.style.display='none'; wrap.style.display='block';
+    if(built===PICKED) return;
+    built=PICKED; found={};
+    who.textContent='The record: '+W[PICKED];
+    col(cols,COLS,PICKED); col(ext,EXT,PICKED);
+    ext.style.display='none'; $('#cmpExtBtn').textContent='Show the extension facts';
+    tally();
+  };
+  $('#cmpExtBtn').addEventListener('click',function(){
+    var open=ext.style.display!=='none';
+    ext.style.display=open?'none':'grid';
+    this.textContent=open?'Show the extension facts':'Hide the extension facts';
   });
 })();
 
@@ -1046,6 +1178,7 @@ var GO;
     $('#footlabel').textContent=pages[i].dataset.t+'   ·   page '+(i+1)+' of '+pages.length;
     $('#prevBtn').disabled=(i===0); $('#nextBtn').disabled=(i===pages.length-1);
     window.scrollTo(0,0);
+    if(pages[i].dataset.build==='compare') buildCompare();
   }
   GO=go;
   $('#prevBtn').addEventListener('click',function(){go(i-1)});
