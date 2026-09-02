@@ -122,6 +122,20 @@ a{color:var(--brass)}
 .btn.solid{background:var(--brass);color:#191510}
 .btn[disabled],.btn.off{opacity:.4;cursor:not-allowed;pointer-events:none}
 
+/* her story: beats + numbers */
+.nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:16px}
+@media(max-width:1100px){.nums{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ntile{background:var(--panel2);border-radius:9px;padding:12px 16px;display:flex;flex-direction:column;gap:2px}
+.ntile b{font-family:'Instrument Serif',serif;font-weight:400;font-size:34px;line-height:1;font-variant-numeric:tabular-nums}
+.ntile span{font-size:12.5px;color:var(--ink3);line-height:1.35;letter-spacing:.03em}
+.beats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}
+@media(max-width:1100px){.beats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.beats{grid-template-columns:1fr}}
+.beat{background:var(--panel);border:1px solid var(--line2);border-radius:9px;padding:12px 15px 13px;display:grid;grid-template-columns:64px 1fr;gap:10px;align-items:start}
+.beat .yr{font-family:'Instrument Serif',serif;font-size:23px;line-height:1.05}
+.beat .yr small{display:block;font-family:'Karla',sans-serif;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-top:3px}
+.beat p{font-size:14px;line-height:1.48;color:var(--ink2);margin:0}
+.beat p b{color:var(--ink);font-weight:600}
 /* figures */
 figure.src{background:#0c0a07;border:1px solid var(--line);border-radius:3px;padding:10px;box-shadow:0 16px 40px rgba(0,0,0,.45);margin:0}
 figure.src img{display:block;width:auto;max-width:100%;height:auto;margin:0 auto;cursor:zoom-in}
@@ -393,7 +407,7 @@ figure.src figcaption .cite{color:var(--brass-dim)}
       <div style="display:grid;gap:16px">
         <div class="pane">
           <h3>Where to look</h3>
-          <p><b style="color:var(--ink)">Here.</b> Each woman has two pages: her life, and how she is remembered. Every picture enlarges when you click it. Read the captions, they are not decoration.</p>
+          <p><b style="color:var(--ink)">Here.</b> Each woman has three pages: her life, her story year by year, and how she is remembered. Every picture enlarges when you click it. Read the captions, they are not decoration.</p>
           <p><b style="color:var(--ink)">The videos</b> you watched as a class. Go back to them if you need to.</p>
           <p><b style="color:var(--ink)">Canvas.</b> Your teacher has put more resources there, including more pictures of each woman.</p>
         </div>
@@ -428,6 +442,18 @@ figure.src figcaption .cite{color:var(--brass-dim)}
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============ Mary Reibey, story ============ -->
+<section class="pg" data-st="3" data-t="Mary Reibey: her story">
+  <div class="pghead sm">
+    <div><span class="lbl num" style="color:var(--mr)">Her story</span><h2 style="color:var(--mr)">Mary Reibey, year by year</h2></div>
+    <div class="lede">Seventy-eight years, told in the order they happened. <strong>This is the page to take your notes from.</strong> Every date here is from the records.</div>
+  </div>
+  <div class="pgbody">
+    <div class="nums"><div class="ntile"><b style="color:var(--mr)">15</b><span>years old when she landed in Sydney</span></div><div class="ntile"><b style="color:var(--mr)">7</b><span>children, five of whom she outlived</span></div><div class="ntile"><b style="color:var(--mr)">1,000</b><span>acres of land she held by 1820</span></div><div class="ntile"><b style="color:var(--mr)">78</b><span>years old when she died</span></div></div>
+    <div class="beats"><div class="beat"><div class="yr" style="color:var(--mr)">1777</div><p><b>Born Molly Haydock</b> in Bury, Lancashire, on 12 May. Both her parents died while she was small, and her grandmother raised her.</p></div><div class="beat"><div class="yr" style="color:var(--mr)">1790<small>or 1791</small></div><p>Caught with a neighbour&rsquo;s pony, <b>dressed as a boy and calling herself James Burrow</b>. Sentenced to seven years&rsquo; transportation. The old records disagree on the year, so she was 13 or 14.</p></div><div class="beat"><div class="yr" style="color:var(--mr)">1792</div><p>Lands in Sydney from the convict ship <i>Royal Admiral</i> in October, <b>aged 15</b>. Put to work as a nursemaid. The next day she writes to her aunt in England.</p></div><div class="beat"><div class="yr" style="color:var(--mr)">1794</div><p><b>Marries Thomas Reibey</b>, a young ship&rsquo;s officer turned trader. They farm on the Hawkesbury River and carry grain to Sydney by boat.</p></div><div class="beat"><div class="yr" style="color:var(--mr)">1807</div><p>The Reibeys buy the schooner <i>Mercury</i> and trade across the Pacific. Their small boats carry <b>coal, cedar and wheat</b>.</p></div><div class="beat"><div class="yr" style="color:var(--mr)">1811</div><p><b>Thomas dies</b> on 5 April. Mary is 34, with seven children and a business to run. She runs it.</p></div><div class="beat"><div class="yr" style="color:var(--mr)">1812</div><p>Opens a <b>warehouse in George Street</b>, trading with American, Chinese and Indian merchants.</p></div><div class="beat"><div class="yr" style="color:var(--mr)">1817</div><p>Buys the brig <i>Governor Macquarie</i>. Becomes a shareholder in the new <b>Bank of New South Wales</b>, which rents its first building from her. The same year she is convicted of assaulting a man who owed her money.</p></div><div class="beat"><div class="yr" style="color:var(--mr)">1820<small>to 1821</small></div><p>Sails to England with two of her daughters and <b>keeps a journal</b> of a year touring England and Scotland. Collects her birth certificate from the church at Bury. Leaves the girls at school in Edinburgh.</p></div><div class="beat"><div class="yr" style="color:var(--mr)">1825</div><p>Made a governor of the Sydney Free Grammar School. A convict girl, now trusted to run a school.</p></div><div class="beat"><div class="yr" style="color:var(--mr)">1855</div><p><b>Dies at Newtown</b> on 30 May, aged 78, one of the wealthiest people in the colony.</p></div></div>
   </div>
 </section>
 
@@ -480,6 +506,18 @@ figure.src figcaption .cite{color:var(--brass-dim)}
         <div class="fact" style="font-size:16px"><b>Her advertising slogan, in her own words:</b> &ldquo;Comfort for the Poor! Meat Three Times a Day!!&rdquo; Two exclamation marks. She knew exactly who she was talking to, and what they were hungry for.</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============ Caroline Chisholm, story ============ -->
+<section class="pg" data-st="3" data-t="Caroline Chisholm: her story">
+  <div class="pghead sm">
+    <div><span class="lbl num" style="color:var(--cc)">Her story</span><h2 style="color:var(--cc)">Caroline Chisholm, year by year</h2></div>
+    <div class="lede">Sixty-eight years, three countries, and more than eleven thousand people helped. <strong>This is the page to take your notes from.</strong></div>
+  </div>
+  <div class="pgbody">
+    <div class="nums"><div class="ntile"><b style="color:var(--cc)">11,000</b><span>people she found homes and work for</span></div><div class="ntile"><b style="color:var(--cc)">96</b><span>beds in her Sydney home</span></div><div class="ntile"><b style="color:var(--cc)">23</b><span>families she took to Shellharbour</span></div><div class="ntile"><b style="color:var(--cc)">60</b><span>years she was forgotten before Australia remembered her</span></div></div>
+    <div class="beats"><div class="beat"><div class="yr" style="color:var(--cc)">1808</div><p><b>Born Caroline Jones</b> in Northampton, England, on 30 May, the daughter of a well-off farmer.</p></div><div class="beat"><div class="yr" style="color:var(--cc)">1830</div><p>Marries <b>Captain Archibald Chisholm</b>, an officer of the East India Company. Around this time she becomes a Catholic.</p></div><div class="beat"><div class="yr" style="color:var(--cc)">1832</div><p>Goes with him to <b>Madras, in India</b>. Sets up a school for the daughters of soldiers.</p></div><div class="beat"><div class="yr" style="color:var(--cc)">1838</div><p>Arrives in <b>Sydney in September</b> on the <i>Emerald Isle</i>. Sees young women straight off the ships with nowhere to sleep.</p></div><div class="beat"><div class="yr" style="color:var(--cc)">1841</div><p>In January, persuades the Governor to give her part of an old barracks. Opens the <b>Female Immigrants&rsquo; Home</b>: 96 beds, the only free job registry in Sydney, and rats. Closes it after a year because sending people out into the country works better.</p></div><div class="beat"><div class="yr" style="color:var(--cc)">1842</div><p>On her white horse <b>Captain</b>, leads wagon convoys inland and sets up resting stations and job agencies at a dozen country towns.</p></div><div class="beat"><div class="yr" style="color:var(--cc)">1843</div><p>On 6 December, brings <b>23 families to Shellharbour</b> by steamer to start farms. It is Dharawal Country.</p></div><div class="beat"><div class="yr" style="color:var(--cc)">1846</div><p>Returns to England. <b>Gives evidence to two House of Lords committees</b>, something almost no woman had done.</p></div><div class="beat"><div class="yr" style="color:var(--cc)">1849</div><p>Founds the <b>Family Colonization Loan Society</b>, which lends families the fare to Australia. Charles Dickens writes about it in his magazine.</p></div><div class="beat"><div class="yr" style="color:var(--cc)">1854</div><p>Back in Australia. Writes to the Governor of Victoria asking to build <b>shelters along the roads to the goldfields</b> so families need not sleep in the bush.</p></div><div class="beat"><div class="yr" style="color:var(--cc)">1866</div><p>Leaves Australia for the last time, on a pension of £100 a year. Ill, and largely forgotten by the new gold-rush population.</p></div><div class="beat"><div class="yr" style="color:var(--cc)">1877</div><p><b>Dies in London</b> on 25 March, aged 68. Buried at Northampton under the words <i>the emigrant&rsquo;s friend</i>.</p></div></div>
   </div>
 </section>
 
@@ -541,6 +579,18 @@ figure.src figcaption .cite{color:var(--brass-dim)}
         <div class="warn"><b style="color:var(--brass)">Say it accurately.</b> She did not do it alone. Her husband&rsquo;s nephew Hannibal helped, and later her sons. John sent letters of advice from England, which she often ignored, because she was the one who could actually see the sheep.</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============ Elizabeth Macarthur, story ============ -->
+<section class="pg" data-st="3" data-t="Elizabeth Macarthur: her story">
+  <div class="pghead sm">
+    <div><span class="lbl num" style="color:var(--em)">Her story</span><h2 style="color:var(--em)">Elizabeth Macarthur, year by year</h2></div>
+    <div class="lede">Eighty-three years, most of them in charge of something. <strong>This is the page to take your notes from.</strong></div>
+  </div>
+  <div class="pgbody">
+    <div class="nums"><div class="ntile"><b style="color:var(--em)">1790</b><span>the year she arrived, free</span></div><div class="ntile"><b style="color:var(--em)">8&frac12;</b><span>years she ran the farms alone</span></div><div class="ntile"><b style="color:var(--em)">6,000</b><span>sheep at Camden by 1818</span></div><div class="ntile"><b style="color:var(--em)">1793</b><span>the year her house was built, and it still stands</span></div></div>
+    <div class="beats"><div class="beat"><div class="yr" style="color:var(--em)">1766</div><p><b>Born Elizabeth Veale</b> at Bridgerule in Devon on 14 August, a farmer&rsquo;s daughter. Taught alongside the <b>vicar&rsquo;s daughter, Bridget Kingdon</b>: Latin, French, history. Far more than most girls got.</p></div><div class="beat"><div class="yr" style="color:var(--em)">1788</div><p>Marries <b>John Macarthur</b>, an army officer, in October.</p></div><div class="beat"><div class="yr" style="color:var(--em)">1790</div><p>Sails with the <b>Second Fleet</b> on the <i>Neptune</i>, so badly run that the family moves to the <i>Scarborough</i> mid-voyage. Loses a baby daughter at sea. Lands in Sydney on <b>28 June 1790</b>, a free settler.</p></div><div class="beat"><div class="yr" style="color:var(--em)">1791</div><p>A ship&rsquo;s surgeon lends her his <b>piano</b>, then gives it to her. An officer who studies the stars teaches her to classify plants. She writes home about having no woman friend to talk to.</p></div><div class="beat"><div class="yr" style="color:var(--em)">1793</div><p>Land at Parramatta. The house called <b>Elizabeth Farm</b> is built. It is still standing.</p></div><div class="beat"><div class="yr" style="color:var(--em)">1795</div><p>Writes to Bridget: <b>50 cattle, a dozen horses, about 1,000 sheep</b>, and 120 acres of wheat.</p></div><div class="beat"><div class="yr" style="color:var(--em)">1801<small>to 1805</small></div><p>John is sent to England after a duel. <b>She keeps everything going</b> for four years.</p></div><div class="beat"><div class="yr" style="color:var(--em)">1805</div><p>The Macarthurs are granted <b>5,000 acres at the Cowpastures</b>, later Camden. Dharawal, Gundungurra and Dharug Country.</p></div><div class="beat"><div class="yr" style="color:var(--em)">1809<small>to 1817</small></div><p>John is banished after the Rum Rebellion. For <b>eight and a half years</b> she runs Elizabeth Farm and Camden with his nephew Hannibal: chooses the rams, oversees the shearing, keeps the accounts, directs the convict workers.</p></div><div class="beat"><div class="yr" style="color:var(--em)">1818</div><p>Over <b>6,000 sheep</b> at Camden, including 300 pure merinos. Camden wool goes on to fetch record prices in England.</p></div><div class="beat"><div class="yr" style="color:var(--em)">1834</div><p>John dies. <b>She stays in charge</b> for the rest of her life.</p></div><div class="beat"><div class="yr" style="color:var(--em)">1850</div><p><b>Dies on 9 February</b>, aged 83. Buried in the family vault at Camden. She never went back to England.</p></div></div>
   </div>
 </section>
 
