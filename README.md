@@ -11,6 +11,7 @@ Live site: https://educoder101.github.io/WWAPT-2026/
 |---|---|
 | `before-the-gold.html` | **Before the Gold: Looking at Early Sydney** (Year 5). A seventeen page gallery built on eight paintings and prints of Sydney made before the 1851 gold rush, all held by the State Library of New South Wales. Students zoom and magnify each picture, write what they notice before any labels appear, hunt for ten hidden details, sort evidence into three piles including "you cannot tell from a picture", compare 1817 with 1827, think about whose Country the town was built on, judge an AI animation of the paintings, then predict the population of Australia in 1861. |
 | `colonial-women.html` | **Colonial Women: Three Lives** (Year 5). Mary Reibey, Caroline Chisholm and Elizabeth Macarthur. A twenty-one page deck built research-first: a condensed First Fleet recap, a timeline to order, a "Research first" brief, three source pages per woman (her life, her story year by year, how she is remembered) with a stop-and-write prompt, thirty facts to sort into three lives (locked until all three 3-2-1s are ticked off), a myth-busting card set, a page on whose Country each of them built on, a gathering grid with sentence starters only, and a "Compare your notes" page that reveals the record only after the grid is written. Deliberately has **no text inputs**: all writing happens in exercise books. Quiz and Padlet links are set in two variables at the top of the script block. |
+| `discovery-of-gold.html` | **The Discovery of Gold** (Year 5, Week 7 Lessons 1 and 2). A thirty-four card deck for the first gold double: whose Country the goldfields were on (Wiradjuri, Wadawurrung, Dja Dja Wurrung) and what sheep and then diggers did to it, the story of the five specks at Ophir in ten beats with a numbered question on every card, live maps from Sydney over the Blue Mountains to Ophir and from Melbourne to Ballarat and Bendigo, a world map of where the diggers came from, and a four-ring "ripples" synthesis. Every card carries a **Know this** box and an **In your book** box. Teacher notes and timings appear with the toggle in the header or by adding `?teacher` to the address. Pictures open in the same zoom-and-magnify viewer as *Before the Gold*. |
 | `what-is-history.html` | **What Is History?** (Year 6). A seven question inquiry page: what history is, how people learn about the past, what a historian does, key events and people, why perspectives differ, and whether history is worth learning. All artwork is original inline SVG. |
 | `history-hunt-worksheet.html` | The paired worksheet for the inquiry page. Four student pages, two teacher answer pages. Prints to A4. |
 | `diggers-log-booklet.pdf` | **The Digger's Log**, the illustrated goldfields homework booklet, ready to print. |
@@ -19,7 +20,9 @@ Live site: https://educoder101.github.io/WWAPT-2026/
 
 - Every HTML file is self-contained. Images are embedded, so they work without an
   internet connection, apart from Google Fonts and the embedded video on page 15
-  of *Before the Gold*.
+  of *Before the Gold*. The exception is *The Discovery of Gold*, whose twenty-six
+  pictures load from Wikimedia Commons (all public domain or open licence) and whose
+  maps use OpenStreetMap tiles; a labelled placeholder appears if a picture is blocked.
 - Student writing is kept in memory only. Both interactive pages can be printed
   or saved as a PDF at the end.
 - `before-the-gold.html` corrects three errors in the original source deck: the
